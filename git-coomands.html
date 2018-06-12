@@ -89,11 +89,20 @@ git branch -a
 
 
 # Commit changes
-
+# show the changes made to the code  
 git  diff 
+
+# top check the current git status 
 git status 
+
+# add changes to the staging directory  
 git add  -A
+
+#To commit changes into the master locally 
 git commit  -m "mesage "
 
-# then push  
-git pull oring 
+# this will pull any changes happening while we were working on our code since the last time we pull from the repository
+git pull origin master 
+
+#This push the changes into our master branch in our remote repository 
+git push origin master 
