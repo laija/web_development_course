@@ -19,11 +19,30 @@ $(document).ready(function(){
 			"web": $('input[name="web"]').val()
 		};
 		console.log(usuario);
+		/*
 		$.post($(this).attr("action"),usuario, function(response){
 			console.log(response);
 		}).done(function(){
 			console.log("usuario annadido correctamente");
 		});
+		*/
+		$.ajax(){
+			type: 'POST',
+			dataType: 'json';
+			url: $(this).attr("action");
+			data: usuario, 
+			beforeSend: function(){
+				console.log("Enviando usuario")
+			},
+			success: function(response){
+				console.log(response);
+			},
+			error: function(response){
+				console.log("A ocurrido un error ")
+			};
+			timeout: 1000;
+		};
+
 		return false;
 	});
 })
