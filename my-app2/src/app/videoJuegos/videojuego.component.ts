@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute, Params} from '@angular/router';
 import {Component, OnInit, DoCheck, OnDestroy} from '@angular/core';
 
 @Component({
@@ -9,17 +10,17 @@ import {Component, OnInit, DoCheck, OnDestroy} from '@angular/core';
 export class VideoJuegoComponent implements OnInit, DoCheck, OnDestroy{
 	public titulo: string;
 	public listado: string;
+	public nombre: string;
+	public followers: number;
 
 	// primero se ejecuta el contructor porque es lo primero que se ejecuta en cualquier clase 
-	constructor(){
+	constructor(
+		private _route: ActivatedRoute,
+		private _router: Router
+	){
 		this.titulo = "Componente de video juegos"
 		this.listado = "listato de los juego mas populares"
 		//console.log('Se cargo el constructor de videojuego');
-	}
-
-	// se ejecuta inmediament despues de que se carga el componente
-	ngOnInit(){
-		console.log("OnInit ejecutado");
 	}
 
 	// se produce cada vez que se produce un cambio en el componente o en la aplicacion de angular 
@@ -36,4 +37,21 @@ export class VideoJuegoComponent implements OnInit, DoCheck, OnDestroy{
 	ngOnDestroy(){
 		console.log("On Destroy ejecutado");
 	}
+
+	redirigir(){
+		this._router.navigate(['/zapatillas']);
+	}
+
+	// se ejecuta inmediament despues de que se carga el componente
+	ngOnInit(){
+		this._route.params.subscribe((params: Params) => {
+			this.nombre = params.nombre;
+			this.followers = +params.followers;
+
+			if(this.nombre == 'ninguno'){
+				this._router.navigate(['/home']);
+			}
+			});
+		}
+	}	
 }

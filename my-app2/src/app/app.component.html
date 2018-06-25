@@ -5,9 +5,15 @@
     Bienvenido al {{title}}!
   </h1>
   <p>{{descripcion}}</p>
-  <button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar</button>
-  <button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Mostrar</button>
-  <videojuego *ngIf="mostrar_videojuegos"></videojuego>
-  <zapatillas></zapatillas>
+  <!--<zapatillas></zapatillas>-->
+  <nav>
+  	<a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+ 	&nbsp;
+  	<a [routerLink]="['/zapatillas']" [routerLinkActive]="['active']">Zapatillas</a>
+  	&nbsp;
+  	<a [routerLink]="['/videojuego']" [routerLinkActive]="['active']">Videojuegos</a>
+  </nav>
+  <hr>
+  <router-outlet></router-outlet>
 </div>
 
