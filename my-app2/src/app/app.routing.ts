@@ -6,6 +6,7 @@ import { Routes, RouterModule} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ZapatillasComponent } from './zapatillas/zapatillas.component';
 import { VideoJuegoComponent } from './videoJuegos/videojuego.component';
+import { ExternoComponent } from './externo/externo.component';
 
 // Array de rutas
 const appRoutes: Routes = [
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
 	{path: 'videojuego', component: VideoJuegoComponent},
 	{path: 'videojuego/:nombre', component: VideoJuegoComponent},
 	{path: 'videojuego/:nombre/:followers', component: VideoJuegoComponent},
+	{path: 'externo', component: ExternoComponent},
 	{path: '**', component: HomeComponent}
 ];
 

@@ -7,7 +7,8 @@ import {Component, OnInit, DoCheck, OnDestroy} from '@angular/core';
 
 })
 
-export class VideoJuegoComponent implements OnInit, DoCheck, OnDestroy{
+export class VideoJuegoComponent implements OnInit, DoCheck, OnDestroy
+{
 	public titulo: string;
 	public listado: string;
 	public nombre: string;
@@ -53,5 +54,4 @@ export class VideoJuegoComponent implements OnInit, DoCheck, OnDestroy{
 			}
 			});
 		}
-	}	
-}
+}	

@@ -12,11 +12,17 @@ export class HomeComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+ngOnInit() {
   }
 
 setIdentificado(){
 	this.identificado=true;
+	console.log(this.identificado);
+}
+
+unsetIdentificado(){
+	this.identificado=false;
+	console.log(this.identificado);
 }
 
 }

@@ -1,34 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {Zapatilla} from '../models/zapatilla'
+import {Zapatilla} from '../models/zapatilla';
+import { ZapatillaService} from '../services/zapatilla.service';
 
 @Component({
 	selector: 'zapatillas',
-	templateUrl: './zapatillas.component.html'
+	templateUrl: './zapatillas.component.html',
+	providers: [ZapatillaService] // El servicio solo se podra user hasta que se inyecte como un provider, como un servicio de mi componente
 })
 
 export class ZapatillasComponent implements OnInit{
 	//	propiedades
-	public titulo: string = "Component de zapatillas";
-	public zapatillas: Array<Zapatilla>;
-	public marcas: String[];
-	public color: string;
-	public mi_marca: string;
+	public titulo: string = "Component de zapatillas"; 	public zapatillas: Array<Zapatilla>; 	public marcas: String[]; 	public color: string;	public mi_marca: string;
 
-	constructor(){
+	constructor(
+		private _zapatillaService: ZapatillaService // el servicio se injecta como un dependencia de una propiedad 
+	)
+	{
 		this.mi_marca = "Fila";
 		this.color = 'blue';
 		this.marcas = new Array();
-		this.zapatillas=[ // this is an array of objects 
-		new Zapatilla('Reebook Classic', 'Reebook', 'Blanco', 80, true);
-		new Zapatilla('Nike Runner', 'Nike', 'Gris', 60, true);
-		new Zapatilla('NB classic', 'NB', 'Verde', 70, false);
-		new Zapatilla('Classic', 'Converse', 'Verde', 70, false);
-		new Zapatilla('Classic', 'Converse', 'Blue', 70, false);
-
-		];
 	}
 	ngOnInit(){
-		console.log(this.zapatillas);
+		this.zapatillas = this._zapatillaService.getZapatillas();
+		//alert(this._zapatillaService.getTexto());
 		this.getMarcas();
 	}
 
@@ -54,13 +48,8 @@ export class ZapatillasComponent implements OnInit{
 	borrarMarca(index){
 		this.marcas.splice(index,1);
 	}
-/*	
-	onBlur(){
-		console.log("Has salido del input");
-	}
-*/
+
 	mostrarPalabra(){
 		alert(this.mi_marca);
 	}
 }
-
