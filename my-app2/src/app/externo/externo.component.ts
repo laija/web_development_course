@@ -9,6 +9,7 @@ import { PeticionesService} from "../services/peticiones.service";
 	export class ExternoComponent implements OnInit {
 	public user: any;
 	public userId: any;
+	public fecha: any;
 
 	constructor(
 		private _peticionesService: PeticionesService
@@ -17,10 +18,12 @@ import { PeticionesService} from "../services/peticiones.service";
 	}
 
 	ngOnInit() {
+		this.fecha = new Date(2019,5,20);
 		this.cargaUsuario();
 	}
 
 	cargaUsuario(){
+		this.user = false;
 		this._peticionesService.getUser(this.userId).subscribe(
 			result =>{
 				this.user = result.data;
