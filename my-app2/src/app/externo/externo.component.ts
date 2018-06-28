@@ -10,11 +10,17 @@ import { PeticionesService} from "../services/peticiones.service";
 	public user: any;
 	public userId: any;
 	public fecha: any;
+	public new_user: any;
+	public usuario_guardado;
 
 	constructor(
 		private _peticionesService: PeticionesService
 	){ 
 		this.userId = 2;
+		this.new_user = {
+					    "name": "",
+					    "job": ""
+						}
 	}
 
 	ngOnInit() {
@@ -34,4 +40,17 @@ import { PeticionesService} from "../services/peticiones.service";
 		);
 	}
 
+	onSubmit(form){
+		this._peticionesService.addUser(this.new_user).subscribe(
+			response =>{
+				this.usuario_guardado =  response;
+				console.log(response);
+				form.reset();
+			},
+			error =>{
+				console.log(<any>error);
+
+			}
+			);
+	}
 }
