@@ -1,0 +1,18 @@
+hoisting 
+This mean java script reserves all the space in memory for variables and functions in memory before executing the code, but functions are accesible even before they are defined but variables are undifined until a value is assigned to them in the code, that is why when you access the variable before is assigned you get an undefined 
+
+
+
+Single Threaded, Synchronous Execution
+Single Threaded: one comman at a time
+Synchronous Execution: one line at a time and in the order it appears 
+
+Invocaition: running/calling a functio, in java script, by using parenthesis()
+
+execution contex: 
+create phase: 
+lexical environtment 
+
+Scope Chain: 
+Scope means: where can I Access the variable 
+Chain: are the links or outer environtment references 

@@ -1,0 +1,514 @@
+# This if for  readhat and fedora OS
+
+yum package management 
+
+#to search for a package 
+yum search http
+
+#to get information about the package 
+yum info http 
+
+# to instal package
+yum install <package_name>
+
+# to remove package, by default the dependencies are left behind 
+yum remove <package_name>
+
+# to tremove package and its dependencies that are no longet needed, but will left the ones that are requeired 
+yum autoremove <package_name>
+
+# to si is package is installed 
+yum list intalled <package_name>
+
+# list repos available 
+yum repolist  
+
+# move the the directory to where the repo files are stored  
+cd /et/yum.repos.d 
+
+# To make sure the the local yum database of pacakages is clean up 
+yum clean all
+
+# update the system with yum 
+yum update  
+
+
+RPM package management for red hat/fedora systems 1
+
+RPM command was the orginally command to instal software on red hat unix and still use to these days  
+
+#to instal the package  
+rpm -i <rmp file name.rpm>
+
+-v verbose ouptut 
+-h progress bar 
+
+APT package management for Debian/ubuntu based systems 
+apt has only one file listing all the external repositories 
+
+# File where all the repositories are listed 
+less /etc/apt/source.list
+
+# apt  command The below command updates all the available listing packages on the repositories the system is confired for 
+apt update 
+
+# To search for a package 
+apt-cache search <package_name>
+
+# to install a package 
+apt install <package name>
+
+# to remove a package 
+apt remove <package name>
+
+# To remove any file left behind after the removal  
+apt remove --purge <package name>
+
+# To remove any file left behind after the removal  
+apt autoremove
+
+# checks all of our installed packages and check if there is an update acording to our cache file
+apt update 
+
+# upgrades all packages if the system if consider are needed
+apt full-upgrade 
+
+
+
+dpkg command package management 
+was the original package intallation command for debian distributions 
+
+ls command 
+ls -S # sort by size 
+ls -lt # sort by time witht he most recent at the top 
+
+
+whoami command 
+# Show user name of the current log in user the same one from the env variable $LOGNAME 
+
+su command
+su  - # log in as root 
+# sustitute user command 
+
+reboot command
+# to reboot the linuz system
+
+init command 
+# change the state of the linux system
+
+shutdown command 
+# to shutdown the system 
+
+poweroff command 
+# to shutdown the system 
+
+half command 
+# to shutdown the system 
+
+top command 
+# shows the top running processes 
+
+uname command 
+# prints user information 
+-r release version 
+-v build version of the kernel we have 
+-m machine tipe / same as  -p
+-o get full official name  of the OS
+-a all the information at once 
+-s same as using uname without argument
+
+ldbkl command 
+# to view all the hard drives attaches to your system 
+
+free command
+# to view the RAM statistics for the system 
+
+# tar doesnt compress the files but puts everything in a single file 
+
+tar -cvf file.tar  . 
+-c we are creating a new archive  
+-f we will provide a name for our file 
+
+tar -tf <file.tar>
+-t this mens we want to list the archived content 
+
+tar -xf  <file.tar>
+-x to extrac the content of the file and keep the file 
+
+tar  -czf  <file.[tar.gz-tgz]> file_to_compress
+-x compress in gzip format 
+
+tar  -cjf  <file.[tar.bz2]> file_to_compress
+-x compress in bz2 format 
+
+tar -xvzf  <file.tar>
+-xzf to extrac the content of the file in gzip format and keep the file in a verbose mode 
+
+tar -xvjf  <file.tar>
+-xjf to extrac the content of the file in bz2 format and keep the file in a verbose mode 
+
+#zip command  
+zip -r filename.zip <file_to_compress>
+-r go recursibly or will only compress the given file /directory  
+
+unzip filename.zip
+# to uncompress the zip file 
+
+gzip  file* / bzip2  file* 
+#by default gzip will replace the file with the compressed version keep the orginal file name and add .gz to the file name  
+
+gunzip file.gz / bunzip2 file.bz2 
+# to unzip the gz/bz2 file 
+
+gunzip command
+# To extract the  gzip 
+
+apropos command 
+# is a grep for the man same as the -k option of the man command 
+
+
+
+################################################################################################################################################################ Important files #######################################################
+
+
+.bash_history  file saves all the history command information 
+Archives anc compresion 
+
+
+/etc/bashrc: system-wide functions and aliases 
+
+/etc/profile: system-wide environment and startup programs used during a loging shell
+
+/etc/profile.d: location of extra encironmen setup scripts 
+
+.bash_profile used  to set user specific shell environment preferences 
+
+.bash_logout ran when the user logs ut of a login shell, not a terminal, does not exist on every system 
+
+.bashrc non-login file that stores user specific functions and aliases  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################################################################### Variables ##########################################################
+$HISTFILESIZE 
+saves the number of  commans saved in the history bash file 
+
+$HISTCONTROL
+keeps information abour how we want bash to save the changes 
+
+$PWD 
+curernt directory 
+
+$OLDPWD 
+past curernt directory 
+
+$PATH
+includes 
+
+################################################################################################################################################################ Important tricks ######################################################
+
+!<number in chistory file> executes the command corresponded to that command in the history file 
+
+log in shell: is when you connect to the system trought ssh 
+
+During a login shell, these configurations script files are called in this order: 
+/etc/profile 
+Then the order branches out, the fist file is found is used, all of the others are ignored even if they exist 
+.bash_profile
+.bash_login
+.profile
+
+Next .bashrc is called, followed by /etc/bashrc 
+
+
+/etc/profile  --> .bash_profile --> .bashrc --> /etc/bashrc
+
+
+File globbling 
+
+* Matches zero or more chracters
+
+? Marches a single character 
+
+[^abc] Matches any one character except those in the list, case sensitive 
+
+[0-9] matches a range of number
+
+"" Contains strings any variable or commands within them get evaluated or acted on 
+
+'' Anything within these get treated literally, disables any special character functionality 
+
+\ escape character, disables any special character  functionality that inmediately follow it 
+
+On regrex 
+. stands for a single character 
+
+^ search the geginning of a line 
+
+$ search the end of the file
+
+$ in the command line indicates a normal user 
+# in the command line indicates a root user  
+
+command - what to do 
+options - how to do it 
+arguments - waht to do it on 
+
+Absolute path 
+
+relative path is a path relative to our current directory 
+
+###################################################################################################################################################################### Hardware ########################################################
+/proc/cpuinfo gives information about the procesor 
+
+the letter in the hard drive inticate the order in how the kernel finds the hard drive and the number indicates the number of the partition 
+/dev/sda
+/dev/sdb
+/dev/sdc
+
+
+
+Adding users 
+# groupapp command  
+# to create a new group with a name we provide 
+# -g if we want to specify a group Id we could use the 
+
+# useradd command 
+# to create a new user account
+# -G <group_id> put the user into a group while creating, segundary groups are specify with G
+# -g  changes the primary group for the  user  
+# -c "user full name"  adding a comment just to be clear  
+# -m  to create a home directory  
+# /etc/default/useradd the command takes some default settings from this file in there, it referes to /etc/skell, the files contained there are copied into the user's home directory 
+
+# sudo passwd command 
+# set a password for a user 
+
+# /etc/shadow file
+# primary configuration file for all encrypted passwords for users on a system 
+
+# /etc passwd
+# to check if a new user was created 
+
+# last command  
+# to view the las time users log in into the system 
+
+
+
+Linux + and LPIC-1 - determinen configure Hardware settings 
+
+101.1
+/etc/fstab is a file loaded in boot, definis the filesystems that are seted up 
+/proc  here are the directories  that correspond to a proccess id running in the system and devices in our system 
+/proc/mont tell us about the local en remote mount in our system 
+/proc/interrupts how the hardware is comunited with the cpu
+/proc/ioport  addresses that identify a device in the kernel module that are associated with it 
+/proc/dma unlike, a device can use to access system memory directly,  when you use a an interrupt you have to go trought the cpu to get access to whatever it is you are asking for, but with the dma assinged to a particualr module  or driver then the kernet says go ahaead and use this dma to get access to the memory that you need. 
+/proc/usb usbs are ussually here 
+/proc/pci usbs are ussuall 
+/proc/dev list all the hardware into a directory, they corespond to devices in our system 
+
+101.1
+lsmod command 
+# shows the kernel module currently loaded 
+
+lscpu command
+# displays information about the CPU architecture 
+# lscpu -aep to view all the pcu in a pareseble format 
+
+lsblk command
+# displays the block devices in the system 
+# lsblk -t -f show information about the devices in the system and where they are mounted 
+
+lspci command 
+# lists all PCI devices  
+# -v  to get extra information about the PCI devices 
+
+lsub command 
+# to list the usbs plug in in the computed 
+# lsusb -s 001:007   displays the information for that particular bus 
+# -t displays information i asckke  format 
+
+lsraid command 
+# 
+
+lsdev command 
+# displays everythings that is reconigze but the linus kernel, 
+# The information displayes about  I/O ports, devices and DMA comes from the  /proc file systems 
+
+
+Boot the system (boot process -sysvinit - Porwer on to system prompt)
+what is "sysvinit"?
+this is a package, containing a group of processes that are responsible for controlling the basic functions of the system. 
+Primarily, it includes the "init" applications, which is the very first applications started by the kernet after the boot loader stats the boot process. 
+The init program then controls the startup, running the shutdown of all other program (it becomes the parent of everything on the system). 
+
+Boot Process 
+
+1.- system power on 
+2.-BIOS load 
+2.- BIOS scan teh hands off the primary or chosen disk's boot sector
+Boot sector provice the MBR (Master Boot Record), withing the first 512 bytes of the active ( or first, depending on 3.- your instalation ) deive / NOTE: can be a flppy, USB thumb drive our internatl disk drive) 
+4.- Boot loader is executes 
+5.- LILO/BRUB/BRUB2 begins (determins what you can boot, here a re the configuration for you to boot )
+7.- USER INPUT - depending on configuration, the user may be able to choose from a meny of potential boot types or kernet version of siply allow the default to proceed
+8.- Linux kernel is read and executed 
+9.- device initialization, module loading, and the initial RAM disk (initrd) id loaded
+10.- Root filesysem is mounted 
+11.- The init program doads ( and becomes the first process ID -/sbidn/init)
+12.- /etc/inittab is read and the appropriate runlevel script(s) are run 
+13.- Modules indicated witing the init scripts are loaded 
+14.- Root filesystem is checked 
+15.- Remaining local filesystems are mounted 
+16.- Network devices are started 
+17.- init process rescans the /etc/inittab file and changes/sets the system to indicated defavult runlevel and completes execution of appropiate scripts 
+18.- Runlevel scripts are executec in numeric order 
+19.- TTY sessions are loade as listen in /etc/inittab
+20.- System login prompt is displayed on console, system is ready for login 
+
+SYSVINIT Runlevels 
+0 - HALT (shutdown)
+1 - Single user 
+2 - Multiple user, but no network or remote filesystem 
+3 - full multi user, including networking and remote filesystems 
+4 - Unsed 
+5 - X11
+6 - Reboot 
+
+
+Systemd
+this is an initialization system for bootstrapping the user space and managing all processes susbsequent to system start. 
+
+it was developed to replace the  "ysvinit" init system and address some of the chorcoming of it. Currently, systemd is the default initialization and service management process of almost all modern Linux distributions. 
+
+Systemd is generally considered to be more efficient, allows parallel operations, has fewer depencencies, allows for service prioritization and precedence, and reduces start up time. 
+ 
+Boot process 
+1.- system power on 
+2.-BIOS load 
+2.- BIOS scan teh hands off the primary or chosen disk's boot sector
+Boot sector provice the MBR (Master Boot Record), withing the first 512 bytes of the active ( or first, depending on 3.- your instalation ) deive / NOTE: can be a flppy, USB thumb drive our internatl disk drive) 
+4.- Boot loader is executes 
+5.- LILO/BRUB/BRUB2 begins (determins what you can boot, here a re the configuration for you to boot )
+7.- USER INPUT - depending on configuration, the user may be able to choose from a meny of potential boot types or kernet version of siply allow the default to proceed
+8.- Linux kernel is read and executed 
+9.- device initialization, module loading, and the initial RAM disk (initrd) id loaded
+10.- Root filesysem is mounted 
+11.- System runs 
+12.- Default run target is executes  (along with dependencies) on init systems run level 
+13.- Modules indicated withing runlevel target ( and its dependencies) are executed 
+14.- Root filessystem is checked 
+15.- remaining local filesystems are mounted 
+16.- Network devices are started 
+17.- remote filesystem are mounte (if configured)
+18.- Systemd set the runlevel as indicated in the default target 
+19.- System login promt is displayed in the consule, system is ready for login 
+
+Systemd Runlevels 
+0- poweroff.target(shutdown)
+1- rescue.target(Single User/Rescue Shell)
+2- multi-user.target (Non-Graphical, Full Network, Multi-User)
+3- multi-user.target (Non-Graphical, Full Network, Multi-User)
+4- multi-user.target (Non-Graphical, Full Network, Multi-User)
+5- graphical.target (Graphical Desktop, Multi-User)
+6- Reboot.Target (Reboot) 
+
+
+If you open the file /etc/inittab in a systemd based system you won't find the run leverl but the location where the targets are, once you move to that location /usr/lib/systemd/system/*.targets,  
+
+
+Init and Rc Scripts sysvinit 
+Once the system starts init will comte to /etc/rc.d/rc3.d and will start executing the S scripts  S*, in order by number, and vice versa witht the K scrips when the system shuts down, and this corresponds to any run level that has an RC value 
+
+Boot the System (System target and systemd)
+For example in a centos system, is a systemd system, we have the /etc/initab but it it we have the  path /usr/lib/systemd/system where our *.targets exist and they are soft links like runlevel0.target -> poweroff.target
+
+
+Change Runlevel/Boot targets and Shutdown or Reboot System (systemd, sysvinit and uptart)
+This Sysvinit changes are compatible with systemd systems. 
+# runlevel command 
+runlevel 
+N 3
+# to get the current run level of the system, it gives you the previous runlevel and current runlevel, N meand not availabe when shown arter a reboot or boot 
+#  init/telinit 5 command
+# changes the run level of the system and can be done back and forward, this works with systemd and sysvinit
+# to chanche the default init level by modifying /etc/inittab the line id:3initdefault:, just be aware not to set it  to 0 or 6 because this would meke the system to be in a constant reboot 
+
+# shutdown command 
+-h to hold the system, will go all the way down to point where the system is no longer responding to anything but the system has a power off, this can be understand as "now you can power off the option" 
+-P power off the system 
+-r 30 to reboot the system in 30 min 
+-r 0 to reboot the system now 
+-r NOW to reboot the system now 
+-r 30 -k "Tou better get off now" 
+-c is to cancel shutdown
+
+
+Design Harddisk Layout 
+/ mounted on sda2 
+/boot mounted on sda1m that is where were we are goint to boot from 
+swap mounted on sdb1, dedicated swap drive, this is good because having a phisical spining platter as your swap space will cut down on the performance hit it will take if you are running swap because you run out of virtual memory  
+/opt mounted on sdc1 for third party utilities 
+/var mounted on sdd1 for database file 
+/home mount on sda3 for user not to over run the root partition 
+/date mounted on sda1 is an custom addional where some space was mounted in 
+
+
+Design Hard Disk Layout (LVM Basics and swap space )
+what is LVm 
+Logical Volume MAnager, 
+It is a set of tools for allocating, striping mirroing, and resizing logical volumes. 
+LVM allows you to work with one or more disk drives or patitons, in groups, that can be dynamically assigned to pools of storage to be used as filesystems on your linux system.
+
+It provides a ton of flexibility in maintaining your operating system storage so that it can continue to grow as usage and need demand. 
+
+LVM (Logical Volume Manager)
+Allows the creation of Groups of disk (or patitions ) that can be assembled into a singular (or mutiple) filesystem. 
+Componets are:
+PV(physical volume)
+-The basic starting point or unit of storage in LVM. 
+-Corresponds to a disk or partition on the system (either local to the system like /dev/sdb1 or a Storage Area Network block device). 
+VG(volume group) 
+-A combination of one or more PVs to create a pool of available storage. 
+-Made up of PEs(Physical extants) that break up the PVs into units that can be used in a VG.
+LV (logical volume)
+-This is the usable space that gets allocates from a VG. 
+-We can create multiple LVs from a single  VG, using all of part of the pool of space from that VG.
+-Can be resized (increased or decreased) as needed and based on the available space in the VG pool. 
+-If the VG pool runs out of space, simply add one or more additional PVs, Add them to the VG, and then to the LV.
+
+LVM Advantages 
+Flexibility- you can adjust the size of a logical volume, up or down, as needed.
+Allocation additional physical volumes to a volume group when needed allows you to dynamically make more space available as your need grow. 
+Snapshots- make point in time backups of your LV. 
+These can then be uses for easy (no conflict) backups, restores, migrations testing, etc. -All with out affecting the live filessystem. 
+
+Swap Space 
+Partition 
+Swap is commonly allocates in a dedicated partition during the installation process (but can be addes later ad needed).
+Minimum swap partition size should be equal to system moemory +50% (OLD Rule -System Memory x 2 up to 8gb system memory)
+File 
+A swap file can be created with 'dd' utility, it is a apecially formatted file of a predetermined size that you can then activate and use as virtual memory swap just like a partition NOTE: will have more significant performance impact to the overall system than a normal swap partition 
+
+Design hard disk Layout 
+
+
+
+
