@@ -16,3 +16,46 @@ lexical environtment
 Scope Chain: 
 Scope means: where can I Access the variable 
 Chain: are the links or outer environtment references 
+
+coercion: Converting a value from one type to another. This happens quite often in Javascript because it's dynamically typed. 
+
+==	compares even even if the variables are different type because coercion, like 3 - '3', false == 0.
+===	
+
+Etrict equality: compares 2 thing and doesnt try to converts the variables. "3" === 3
+
+
+object literal 
+var person ={}, this creates an empty object  
+
+Name space:
+A container for variables and functions. Typically to keep variables and functions with the same name separate. 
+
+First class functions:
+Everything you can do with other typer you can do with functions. Assign them to variables, pass them around, create them on the fly.
+
+Expresion: 
+An unit of code that result in a value. It doesn't have to save to a variable.
+
+valores asocidos con algo vacios regresan un false like  0, undefined, null, ""
+
+cuando se asigana una funcion como el valor de una variable, no es necesario asignarle un nombre porque el nombre de la variable sirve para identificar la seccion de memoria en la que se encuentra la funcion, y el nombre de la viaraible es usado como el nombre de la function 
+
+First class functions:
+Functions that can be pass around, created ion the fly, used and varibles can be equal to them 
+
+Mutate: 
+to change something, Immutable means it can't be changed. 
+
+By value vs By reference:
+To change a value object creating a new memory space use the =
+c = { greeting: 'howdy'};
+
+If the value is a primitive in an object literal is called a property, but if the value is a function is called a method.
+
+This 
+this relates to the objec in where the function/code is executing, this makes reference to the object in where the function is executing and will refer to an particular object if its method calls this variable. 
+
+mantequilla 
+
+
