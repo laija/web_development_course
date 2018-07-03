@@ -9,11 +9,16 @@ Synchronous Execution: one line at a time and in the order it appears
 
 Invocaition: running/calling a functio, in java script, by using parenthesis()
 
-execution contex: 
-create phase: 
-lexical environtment 
+Execution contex: 
+You get a new one every time you get execute a function 
 
+outer environment reference:
+global execution contex:
+execution stack: 
+create phase: 
+lexical environtment: 
 Scope Chain: 
+
 Scope means: where can I Access the variable 
 Chain: are the links or outer environtment references 
 
@@ -54,8 +59,54 @@ c = { greeting: 'howdy'};
 If the value is a primitive in an object literal is called a property, but if the value is a function is called a method.
 
 This 
-this relates to the objec in where the function/code is executing, this makes reference to the object in where the function is executing and will refer to an particular object if its method calls this variable. 
+This relates to the objec in where the function/methos is executing, this makes reference to the object in where the function is executing and will refer to an particular object if its method calls this variable. Makes reference to an object if the method is attached to the object. 
 
-mantequilla 
+Arguments:
+The parameters you pass to a function. Javascript gives you a keyword of the same name which contains them all. 
+
+language = language || 'en'; // if the parameter language is empty it sets to 'en' because valores asocidos con algo vacios regresan un false like  0, undefined, null, ""
+
+Syntax parser: deletes extra spaces and gives format to the text/code.
+
+Function statement:
+Are functions happens as a new statement and function is the first word and is loaded in memory and needs to be onvoqued  
+
+Function expression:
+could be a variable equal to a function with no name, is not put into memory but create it on the fly 
+
+Immediate invoked function expression (IIFE):
+Is a function that is call exactly at after it is created in the same statemente, like quen a variable is equal to a anonimous function and then called by () in the same line. 
+
+Empression:
+Something that returns a value
+
+Closures:
+The variables that it would normally have reference to anyway even tought these execution contex are gone, this phenomenon of closing in all the variables that is supposed to have access to is called closure. 
+This happens when varibles created on a parent related execution contex are accesible from an execution content created inside the execution content parent that is no longer running but variables are in memory. 
+
+Factory:
+Is a function that returns or mix other things for me. 
+
+Callback:
+Is when a function completes its execution and once is done executes the function it was passed as a parameter. 
+
+Callback function:
+A function you give to another function, to be run when the other funtion is finished. So the function you call(i.e. invoke). 'calls back' by calling the function you gave it when it finishes. 
+
+Function currying:
+creating a copy of a function but with some preset parameters, very useful in mathematical situations. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
