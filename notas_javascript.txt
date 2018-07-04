@@ -25,12 +25,9 @@ Chain: are the links or outer environtment references
 coercion: Converting a value from one type to another. This happens quite often in Javascript because it's dynamically typed. 
 
 ==	compares even even if the variables are different type because coercion, like 3 - '3', false == 0.
-===	
+===	Etrict equality: compares 2 things and doesnt try to converts the variables. "3" === 3
 
-Etrict equality: compares 2 thing and doesnt try to converts the variables. "3" === 3
-
-
-object literal 
+Object literal 
 var person ={}, this creates an empty object  
 
 Name space:
@@ -74,8 +71,8 @@ Are functions happens as a new statement and function is the first word and is l
 Function expression:
 could be a variable equal to a function with no name, is not put into memory but create it on the fly 
 
-Immediate invoked function expression (IIFE):
-Is a function that is call exactly at after it is created in the same statemente, like quen a variable is equal to a anonimous function and then called by () in the same line. 
+Immediate invoked function expression (IIFE) / Self invoking function expression::
+Is a function that is call exactly at after it is created in the same statemente, or right after is defined, like when a variable is equal to a anonimous function and then called by () in the same line. 
 
 Empression:
 Something that returns a value
@@ -96,17 +93,33 @@ A function you give to another function, to be run when the other funtion is fin
 Function currying:
 creating a copy of a function but with some preset parameters, very useful in mathematical situations. 
 
+Inheritance:
+One object gets access to the properties and methods of another object.
 
+Prototype:
+is an object that stands on its own related to an object/function, this object has also properties, and this prototype can be related to another prototype, and properties can be call making reference to the main object and the property of the prototype  object.prod2. And the Object is the bottom of all prototypes
 
+Reflection:
+An object can look at itsef, listing and changing its properties and methods. 
 
+Java doesnt really have classes 
 
+Function contructor:
+A normal function that is used to construct objects. The 'this' variables points a new empty object, and that object is returnd from the function automatically. As a convention they are written with a capital letter
 
+Build-in function constructurs:
+var a  = new string("Carlo");
 
+Primitives are not objects, but the javascript engine box it into a javascript object to be able to use the methods related to a string object. 
 
+for arrays use a c for from i to array_name.lenth
 
+Polyfill:
+Code that adds a feature which the engine may lack. 
 
+Syntactic Sugar:
+A different way to type something that doesn't change how it works under the hood
 
-
-
+Jquery lets you manipulate the DOM that is in memory 
 
 
