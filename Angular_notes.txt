@@ -1,0 +1,21 @@
+Modules Apps and Controllers 
+
+
+
+Dependency injection : 
+Givin a function an object. Rather than creating an object inside the fuction, you pass it to the function. 
+
+
+Minification:
+Shrinking the size of files for faster download, We normally add '.min' to the name of the file. so 'file.js' becomes 'file.min.js' so we cn tell the difference. 
+
+Interpolation:
+Creating a string by combining strings and placeholders. 
+'My name is' + name is interpolated, and retults in 'My name is Tony'.
+
+
+
+
+
+<script src="//code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
+        <script src="//code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
