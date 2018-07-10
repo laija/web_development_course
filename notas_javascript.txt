@@ -78,7 +78,7 @@ valores asocidos con algo vacios regresan un false like  0, undefined, null, ""
 cuando se asigana una funcion como el valor de una variable, no es necesario asignarle un nombre porque el nombre de la variable sirve para identificar la seccion de memoria en la que se encuentra la funcion, y el nombre de la viaraible es usado como el nombre de la function 
 
 First class functions:
-Functions that can be pass around, created ion the fly, used and varibles can be equal to them 
+Functions that can be pass around, created on the fly, used and varibles can be equal to them 
 
 By value vs By reference:
 To change a value object creating a new memory space use the =
@@ -114,7 +114,7 @@ Something that returns a value
 
 Closures:
 The variables that it would normally have reference to anyway even tought these execution contex are gone, this phenomenon of closing in all the variables that is supposed to have access to is called closure. 
-This happens when varibles created on a parent related execution contex are accesible from an execution content created inside the execution content parent that is no longer running but variables are in memory. 
+This happens when varibles created on a parent related execution contex are accesible from an execution content created inside the execution content parent that is no longer running (our of the execution extac) but variables are in memory. 
 
 Factory:
 Is a function that returns or mix other things for me. 
@@ -124,6 +124,23 @@ Is when a function completes its execution and once is done executes the functio
 
 Callback function:
 A function you give to another function, to be run when the other funtion is finished. So the function you call(i.e. invoke). 'calls back' by calling the function you gave it when it finishes. 
+
+bind():
+Using bind we pass the  object we want the variable this to be or we can preset a arameter for a function. 
+var logPersonName = logName.bind(person); 
+logPersonName('en','es');
+
+var arr5 = mapforEach(arr1, checkPastLimit.bind(this, 1));
+
+
+call()/apply():
+They work replacing the reference object setting up the variable this as below. 
+logName.call(person,'en', 'es');
+logName.apply(person, ['en', 'es']);
+
+Function borrowing:
+It is when you can borrow a method from another object to use it in an object that doesnt have it. 
+console.log(person.getFullName.apply(person2));
 
 Function currying:
 creating a copy of a function but with some preset parameters, very useful in mathematical situations. 
@@ -157,7 +174,7 @@ A different way to type something that doesn't change how it works under the hoo
 
 Jquery lets you manipulate the DOM that is in memory 
 
-Methos chaining:
+Method chaining:
 Calling one method after another, and each methos affects the parect object. So obj.methos1().method2() where both methods end up with a 'this' variable pointing at 'obj'.this is like piping. 
 
 
