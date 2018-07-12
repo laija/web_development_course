@@ -17,4 +17,16 @@ myApp.controller('mainController', ['$scope', '$filter', '$http', function ($sco
     .error(function(data, status){
         console.log(data);
     });
+
+    $scope.newRule = '';
+    $scope.addRule = function(){
+        $http.post('https://reqres.in/api/users', {"name": "morpheus", "job": "leader" })
+        .success(function(result){
+        console.log(result);
+        })
+        .error(function(data, status){
+            console.log(result);
+        })
+    };
+
 }]);
