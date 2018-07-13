@@ -138,7 +138,8 @@ tar -xf  <file.tar>
 tar  -czf  <file.[tar.gz-tgz]> file_to_compress
 -x compress in gzip format 
 
-tar  -cjf  <file.[tar.bz2]> file_to_compress
+tar  -cjf  <file.[tar.
+]> file_to_compress
 -x compress in bz2 format 
 
 tar -xvzf  <file.tar>
