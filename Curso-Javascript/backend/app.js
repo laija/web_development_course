@@ -13,6 +13,14 @@ app.use(bodyParser.urlencoded({extende:false})); //metodo de express usar body p
 app.use(bodyParser.json());// todolo que llegue que se convierta a Json 
 
 // CORS
+// Configurar cabeceras y cors
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // aqui se annaden los origenes permitidos 
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
 
 // Rutas
 

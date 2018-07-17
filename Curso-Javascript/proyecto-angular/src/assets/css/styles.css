@@ -1,0 +1,31 @@
+/* Importar fuentes custom*/
+@font-face{
+	font-family: "merienda";
+	src: url("fonts/Merienda/Merienda-regular.ttf") ;
+}
+
+
+@font-face{
+	font-family: "gaegu";
+	src: url("fonts/Gaegu/Gaegu-Regular.ttf") ;
+}
+
+
+
+@font-face{
+	font-family: "knewave";
+	src: url("fonts/Knewave/Knewave-Regular.ttf") ;
+}
+
+/*Generales*/
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font-family: "knewave", arial, Helvetica;
+	font-size: 20px;
+	background: url("img/image.jfif)");
+	position:fixed;
+}
