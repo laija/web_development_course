@@ -4,13 +4,10 @@
 	src: url("fonts/Merienda/Merienda-regular.ttf") ;
 }
 
-
 @font-face{
 	font-family: "gaegu";
 	src: url("fonts/Gaegu/Gaegu-Regular.ttf") ;
 }
-
-
 
 @font-face{
 	font-family: "knewave";
@@ -24,8 +21,249 @@
 	padding: 0px;
 }
 body{
-	font-family: "knewave", arial, Helvetica;
+	font-family: "gaegu", arial, Helvetica;
 	font-size: 20px;
-	background: url("img/image.jfif)");
-	position:fixed;
+	background: url("./img/image.jfif)");
+	background-attachment:  fixed;
+
+}
+
+.clearfix{
+	float: none;
+	clear: both; /*para limpiar los flotados entre los differentes elementos*/
+
+}
+/*Barra de navegacion /header/cabecera */
+
+header{
+	width: 100%;
+	height: 90px;
+	display: block;
+	background: rgba(53, 103, 164, 0.8);
+	position: fixed;
+	text-transform: uppercase;
+}
+
+header ul{
+	display: block;
+	width:35%;;
+	height: inherit;
+	margin: 0px auto;
+	margin-top: -3px;
+}
+
+header ul li{
+	display: inline-block;
+	margin: 0px auto;
+	text-align: center;
+	line-height: 88px;
+}
+
+header a {
+	display: block;
+	padding-right: 20px;
+	padding-left: 20px;
+	height: inherit;
+	text-decoration: none;
+	color: white;
+	transition: all 300ms;
+}
+
+header a:hover,.actived{
+	background: rgba(0,0,0,0.8);
+}
+
+/*Logotipo*/
+
+#logo{
+	font-family: "merienda";
+	font-size: 30px;
+}
+
+#logo a{
+	transition: color 500ms, text-transform 500ms;
+}
+
+header #logo a:hover{
+	background: transparent;
+	color: black;
+	transform: scale(1.50,1.50);
+}
+
+/*Contenedor principal*/
+
+#content{
+	min-height: 600px;
+	width: 75%;
+	margin: 0px auto;
+	box-shadow:  0px 0px 40px black;
+	border-left: 1px solid #b7b7b7;
+	border-right: 1px solid #b7b7b7;
+	background: rgba(255,255,255, 0.7);
+	padding-top: 120px;
+}
+
+/*Pie de pagina*/
+footer{
+	width: 75%;
+	margin: 0px auto;
+	padding-top: 15px;
+	color: rgba(0,0,0, 0.5);
+}
+
+
+/*Sobre mi */
+
+#title{
+	width: 70%;
+	margin: 0px auto;
+	text-align: center;
+	margin-top: ;
+	margin-bottom: 70px;
+}
+
+#title h1{
+	font-family: "gaegu";
+	font-size: 60px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom:  5px;
+}
+
+#tittle h2{
+	font-size: 25px;
+	color: gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+article.about{
+	width: 70%;
+	margin: 0px auto;
+	margin-bottom: 50px;
+	font-size: 23px;
+}
+
+.about h2{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+.about p{
+	padding-top: 20px;
+	padding-bottom: 30px;
+	text-align: justify;
+}
+
+/*Seccion con formulario */
+
+.container{
+	padding: 50px;
+	padding-top: 10px;
+}
+
+.container h2{
+	display: block;
+	border-bottom:  1px solid #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+form{
+	width: 80%
+}
+
+form label{
+	display: block;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form textarea{
+	width: 40%;
+	padding: 5px;
+}
+
+form button, 
+form input[type="submit"]{
+	display: block;
+	font-size: 17px;
+	padding: 10px;
+	margin-top: 15px;
+	color: white;
+	background: rgba(53, 103, 164, 1);
+	border: 1px solid rgba(63, 67, 133, 1);
+	cursor: pointer;
+}
+
+form button:hover, 
+form input[type="submit"]:hover{
+	background: rgba(53, 103, 164, 0.8);
+	border: 1px solid rgba(63, 67, 133, 0.8);
+}
+
+form input[disabled]{
+	opacity: 0.4;
+}
+
+.form_error{
+	font-size: 13px;
+	padding: 3px;
+	background: red;
+	color: white;
+	margin-left: 5px;
+}
+
+.message{
+	width: 50$;
+	padding: 5px;
+	border: 1 px solid #eee;
+}
+
+.success{
+	background: green;
+	color: white;
+}
+
+.success a{
+	color: white;
+}
+
+.failed {
+	background: red;
+	color: white;
+
+}
+
+/* Pagina de projectos*/
+
+.project{
+	list-style: none;
+	display: block;
+	float: left;
+	width: 27%;
+	text-align: center;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/*esta es una mascara, un div que recorta lo que sobresalga de el */
+ .project .image{
+ 	width: 100%;
+ 	height: 150px;
+ 	overflow: hidden;
+ }
+
+
+.project img{
+	width: 100px;
+}
+
+.project a{
+	text-decoration: none;
+	color: black;
 }
