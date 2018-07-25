@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from  '../../models/project'; // import modelo, el objeto en base al que estan los objeos en mi mongo db 
+import { Project } from  '../../models/project'; // import modelo, el objeto en base al que estan los objetos en mi mongo db 
 import { ProjectService } from  '../../services/project.service'; // importar el servicio 
 import { UploadService }  from  '../../services/updeload.service';
 import { Global } from '../../services/global';

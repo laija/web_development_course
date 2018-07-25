@@ -23,7 +23,7 @@
 body{
 	font-family: "gaegu", arial, Helvetica;
 	font-size: 20px;
-	background: url("./img/image.jfif)");
+	background: url("./img/pattern.png");
 	background-attachment:  fixed;
 
 }
@@ -93,7 +93,7 @@ header #logo a:hover{
 /*Contenedor principal*/
 
 #content{
-	min-height: 600px;
+	min-height: 700px;
 	width: 75%;
 	margin: 0px auto;
 	box-shadow:  0px 0px 40px black;
@@ -169,6 +169,24 @@ article.about{
 	margin-bottom: 15px;
 }
 
+.container .image {
+	float: left;
+	width: 48%;
+	border-style: solid;
+    border-width: 1px;	
+
+}
+
+.container .image img{
+	width: 100%;
+}
+
+.container .data{
+	float: left;
+	width: 49%;
+	margin-left: 25px;
+}
+
 form{
 	width: 80%
 }
@@ -189,7 +207,9 @@ form textarea{
 }
 
 form button, 
-form input[type="submit"]{
+form input[type="submit"],
+.button-edit,
+.button-delete{
 	display: block;
 	font-size: 17px;
 	padding: 10px;
@@ -199,6 +219,27 @@ form input[type="submit"]{
 	border: 1px solid rgba(63, 67, 133, 1);
 	cursor: pointer;
 }
+
+.button-edit,
+.button-delete{
+	width: 30%;
+	text-align: center; 
+	float: left;
+	margin-right: 10px;
+	text-decoration: none;
+}
+
+.button-edit{
+	background-color: orange;
+	border: none;
+}
+
+.button-delete{
+	background-color: red;
+	border: none;
+}
+
+
 
 form button:hover, 
 form input[type="submit"]:hover{
@@ -266,4 +307,10 @@ form input[disabled]{
 .project a{
 	text-decoration: none;
 	color: black;
+}
+
+.confirm{
+	display: block;
+	font-weight: bold;
+	margin-top: 20px;
 }
