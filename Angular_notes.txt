@@ -78,6 +78,8 @@ export class AboutComponent implements OnInit { // usando export permite que la 
   ngOnInit() {
   }
 
+
+Data binding: allows you to modify thing on the plantilla bidireccionalmente on real time using the FormsModule module and ngModel.
 }
 
 *ngIF: Es una directiva condicional, que nos provee de una funcionalidad a la etiqueta html 
