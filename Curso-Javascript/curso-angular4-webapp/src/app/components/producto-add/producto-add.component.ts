@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
-import { Producto } from '../../models/producto';
+import { Usuario } from '../../models/producto';
 
 @Component({
   selector: 'crear-producto',
@@ -11,10 +11,14 @@ import { Producto } from '../../models/producto';
 })
 export class ProductoAddComponent implements OnInit {
 	public titulo: string;
-	public producto: Producto;
-  constructor() { 
+	public user: Usuario;
+  constructor(
+    private _productoService: ProductoService,
+    private _route: ActivatedRoute,
+    private _router: Router
+    ) { 
   	this.titulo = 'Crear un Nuevo Producto';
-  	this.producto = new Producto('','','','');
+  	this.user = new Usuario('','');
   }
 
   ngOnInit() {
@@ -22,7 +26,19 @@ export class ProductoAddComponent implements OnInit {
   }
 
   onSubmit(){
-  	console.log(this.producto);
+  	console.log(this.user);
+    this._productoService.addProducto(this.user).subscribe(
+      response => {
+        if(response.code == 200){
+          this._router.navigate['/home'];
+        }else{
+          console.log(response);
+        }
+      },
+      error =>{
+        console.log(<any>error)
+      }
+      );
   }
 
 }

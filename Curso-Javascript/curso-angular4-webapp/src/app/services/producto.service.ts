@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs-compat/Observable';
-import { Producto } from '../models/producto';
+import { Usuario } from '../models/producto';
 import { GLOBAL } from './global';
 
 @Injectable({
@@ -19,6 +19,14 @@ export class ProductoService {
 
   getProductos(){
     return this._http.get(this.url+'/api/users?page=2').map(res => res.json());
+  }
+
+  addProducto(user: Usuario){
+    let json = JSON.stringify(user);
+    let params = 'json='+json; 
+    let headers = new Headers({'Content-Type': 'application/json',
+    'Authorization': 'my-auth-token'});
+    return this._http.post(this.url+'/api/users', params, {headers: headers}).map(res => res.json());
   }
 
 }

@@ -6,3 +6,10 @@ export class Producto{
 		public avatar: string,
 	){}
 }
+
+export class Usuario{
+	constructor(
+		public name: string,
+		public job: string,
+	){}
+}
