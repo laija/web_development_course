@@ -15,6 +15,7 @@ Creating a string by combining strings and placeholders.
 
 Directive:
 An instruction to AngularJS to manipulate a pice of the DOM. They could be 'add a class', 'hide this', 'create this', etc. 
+Las directivas son pequennas funciones o funcionalidades que se utilizan en las vistas, la etiquete de un componente es una directiva.
 
 wartchers: 
 In the Angular context, keeps track of the original value everytime an even gets trown
@@ -43,3 +44,42 @@ file:///C:/Users/luis.rojas/Documents/web_development_course/Learn%20and%20Under
 
 npm config set proxy http://10.121.11.33:8080
 npm config set https-proxy http://10.121.11.33:8080
+
+
+
+
+
+import { Component, OnInit } from '@angular/core'; //permite crear un componentes luego usando el decorardor, esto esta en @angular /core
+
+// Definicion del propio componente, no es una funcion, sino aporta un funcionalidad a una clase,que van a modificar el comportamiento de la clase segun lo que se especifique 
+
+
+@Component({
+  selector: 'app-about',  // etiqueta donde se carga el componente
+  templateUrl: './about.component.html',// platilla asociada al componente
+  styleUrls: ['./about.component.css']
+})
+
+/
+// decorador de la clase
+export class AboutComponent implements OnInit { // usando export permite que la clase se use dentro de otro fichero 
+	public title: string; // para usar cualquiera de estas propiedades en la platilla, se llaman con {{<propiedad_name>}}
+	public subtitle: string;
+	public email: string;
+
+  // el constructor es un metodo, es el primer metodo que se carga al instanciar un objeto
+  constructor() { 
+  	this.title = "Luis Laija";
+  	this.subtitle = "This is about me, This is my moment!!";
+  	this .email = "laija.rojas@hcl.com";
+  }
+
+  // este es el metodo que corre despues del constructor en cualquier componente de angular  
+  ngOnInit() {
+  }
+
+
+Data binding: allows you to modify thing on the plantilla bidireccionalmente on real time using the FormsModule module and ngModel.
+}
+
+*ngIF: Es una directiva condicional, que nos provee de una funcionalidad a la etiqueta html 

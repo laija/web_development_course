@@ -3,7 +3,7 @@
 
 	<ul>
 		<li *ngFor="let project of projects" class="project">
-			<a [routerLink]="['/proyecto', project._id]" *ngIf="project.image">
+			<a [routerLink]="['/proyecto/', project._id]" *ngIf="project.image">
 				<div class="image">
 					<img src="{{url+'/get-image/'+project.image}}" />
 				</div>
