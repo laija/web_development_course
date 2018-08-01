@@ -1,13 +1,30 @@
 <h3>{{titulo}}</h3>
 <hr/>
-<div *ngIf="!productos">
-	Cargando Listado de productos
+<div *ngIf="!usuarios">
+	Cargando Listado de Personas
 </div>
 
-<div *ngIf="productos">
-		<ul>
-			<li *ngFor="let producto of productos">
-				<strong>{{producto.first_name}} {{producto.last_name}}</strong>
-			</li>
-		</ul>
+<div *ngIf="usuarios">
+	<div class="row">
+			<div class="col-lg-3" *ngFor="let usuario of usuarios" >
+				<div class="thumbnail">
+					<div *ngIf="usuario.avatar" class="imagen_container">
+						<img src={{usuario.avatar}} class="producto_imagen"/>
+					</div>
+					<!--
+					<div *ngIf="!usuario.avatar">
+						<div class="imagen_relleno"></div>
+					</div>-->
+					<div class="caption">
+						<strong>{{usuario.first_name}} </strong> 
+						<strong>{{usuario.last_name}}</strong>
+						<p class="btns">
+							<a [routerLink]="['/producto', usuario.id]" class="btn btn-sm btn-primary">Ver</a>
+							<a [routerLink]="['/editar-producto', usuario.id]"class="btn btn-sm btn-warning">Editar</a>
+							<a href='#' class="btn btn-sm btn-danger">Borrar</a>
+						</p>
+					</div>
+				</div>
+			</div>
+	</div>	
 </div>

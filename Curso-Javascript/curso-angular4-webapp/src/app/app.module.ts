@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Router 
 import { appRoutingProviders, routing } from './app-routing';
@@ -12,6 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoAddComponent } from './components/producto-add/producto-add.component';
+import { ProductoDetailComponent } from './components/producto-detail/producto-detail.component';
+import { ProductoUpdateComponent } from './components/producto-update/producto-update.component';
 
 
 @NgModule({
@@ -20,14 +22,16 @@ import { ProductoAddComponent } from './components/producto-add/producto-add.com
     HomeComponent,
     ErrorComponent,
     ProductosComponent,
-    ProductoAddComponent
+    ProductoAddComponent,
+    ProductoDetailComponent,
+    ProductoUpdateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     routing,
     appRoutingProviders,
-    HttpModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

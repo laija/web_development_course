@@ -29,11 +29,7 @@ export class ProductoAddComponent implements OnInit {
   	console.log(this.user);
     this._productoService.addProducto(this.user).subscribe(
       response => {
-        if(response.code == 200){
-          this._router.navigate['/home'];
-        }else{
-          console.log(response);
-        }
+        this._router.navigate(['/productos']);
       },
       error =>{
         console.log(<any>error)

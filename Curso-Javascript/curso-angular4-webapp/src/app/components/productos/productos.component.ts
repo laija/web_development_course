@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Producto } from '../../models/producto';
+import { Usuarios } from '../../models/producto';
+
 
 @Component({
   selector: 'app-productos',
@@ -12,25 +13,18 @@ import { Producto } from '../../models/producto';
 })
 export class ProductosComponent implements OnInit{
   public titulo: string;
-  public productos: Producto[]; 
-  constructor(
+  public usuarios: Usuarios[];
+    constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _productoService: ProductoService,
-  	) { 
-  	this.titulo = 'Listado de productos';
+    ) { 
+    this.titulo = 'Listado de productos';
   }
 
   ngOnInit() {
-  	console.log(' Productos components cargado');
-    this._productoService.getProductos().subscribe(
-      result => {
-        this.productos = result.data;
-        if(result.code != 200){
-          console.log(result);
-        }else {
-          this.productos = result.data;
-        }
+    this._productoService.getProductos().subscribe(result => {
+        this.usuarios = result.data;
       },
       error =>{
         console.log(<any>error);
