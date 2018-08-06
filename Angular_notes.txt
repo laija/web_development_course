@@ -13,8 +13,8 @@ Interpolation:
 Creating a string by combining strings and placeholders. 
 'My name is' + name is interpolated, and retults in 'My name is Tony'.
 
-Directive:
-An instruction to AngularJS to manipulate a pice of the DOM. They could be 'add a class', 'hide this', 'create this', etc. 
+Directive (ngIf):
+An instruction to AngularJS to manipulate a piece of the DOM. They could be 'add a class', 'hide this', 'create this', etc. 
 Las directivas son pequennas funciones o funcionalidades que se utilizan en las vistas, la etiquete de un componente es una directiva.
 
 wartchers: 
@@ -23,7 +23,11 @@ In the Angular context, keeps track of the original value everytime an even gets
 Digest loop:
 goes trow every single variable  in the watch list to see if something has changed, compares old value to the new value and if one of these things have change then updates everywhere that is connected to it, anything in the DOM, and anywhere in the code, runs again to check if by changing that it might have change something else until all of the old values and the new values match. 
 
+Component: 
+Es in elemento logico que va a conformar nuestra applicacion de angular, todo dentro de angular  va a ser un componente, que al final va a ser un troso de pantalla y  va a controlar ese troso de pantalla  
 
+constructor():
+Is the first function executed with the component is loades, is where it is recomended to load the properties should get a value assigned. 
 
 <script src="https://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></script>

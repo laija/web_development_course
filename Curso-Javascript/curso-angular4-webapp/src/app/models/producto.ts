@@ -9,8 +9,8 @@ export class Producto{
 
 export class Usuario{
 	constructor(
-		public name: string,
-		public job: string,
+		public first_name: string,
+		public last_name: string,
 	){}
 }
 

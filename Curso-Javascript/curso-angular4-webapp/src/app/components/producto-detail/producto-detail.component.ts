@@ -26,11 +26,11 @@ export class ProductoDetailComponent implements OnInit {
       let id = params['id'];
       this._productoService.getUsuario(id).subscribe(result => {
         this.usuario = result.data;
-        console.log( this.usuario);
+        console.log(result);
       },
       error =>{
         console.log(<any>error);
       });
-    }
+    })
   }
 }

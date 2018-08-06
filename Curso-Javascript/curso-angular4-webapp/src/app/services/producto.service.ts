@@ -30,5 +30,12 @@ export class ProductoService {
     return this._http.get(this.url+'/api/users/' + id);
   }
 
+  editProducto(id, usuario: Usuario){
+    let json=JSON.stringify(usuario);
+    let params = "json="+json;
+    return this._http.post(this.url+'api/users/'+id, params)
+
+  }
+
 }
 

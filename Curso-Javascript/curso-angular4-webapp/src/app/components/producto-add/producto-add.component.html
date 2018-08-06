@@ -6,12 +6,12 @@
 		Nombre
 		<span *ngIf="!name.valid && name.touched" class="label label-danger">El nombre es obligatorio</span>
 	</label>
-	<input type="text" #name="ngModel"  name="name" [(ngModel)]="user.name" class="form-control" required />
+	<input type="text" #name="ngModel"  name="name" [(ngModel)]="usuario.first_name" class="form-control" required />
 	<label>
 		Job
 		<span *ngIf="!job.valid && job.touched" class="label label-danger">El apellido es obligatorio</span>
 	</label>
-	<textarea type="text" #job="ngModel"  name="job" [(ngModel)]="user.job" class="form-control" required></textarea>
+	<textarea type="text" #job="ngModel"  name="job" [(ngModel)]="usuario.last_name" class="form-control" required></textarea>
 
 	<label>
 		Imagen

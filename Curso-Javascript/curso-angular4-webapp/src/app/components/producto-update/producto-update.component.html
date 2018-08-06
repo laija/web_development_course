@@ -1,3 +1,26 @@
-<p>
-  producto-update works!
-</p>
+<h3>{{titulo}}</h3>
+<hr/>
+
+<form #fromUser=ngForm (ngSubmit)="onSubmit()" class="col-lg-6" id="form-usuario">
+	<label>
+		Nombre
+		<span *ngIf="!name.valid && name.touched" class="label label-danger">El nombre es obligatorio</span>
+	</label>
+	<input type="text" #name="ngModel"  name="name" [(ngModel)]="usuario.first_name" class="form-control" required />
+	<label>
+		Job
+		<span *ngIf="!job.valid && job.touched" class="label label-danger">El apellido es obligatorio</span>
+	</label>
+	<textarea type="text" #job="ngModel"  name="job" [(ngModel)]="usuario.last_name" class="form-control" required></textarea>
+
+	<label>
+		Imagen
+	</label>
+	<input type="file" class="form-control"/>
+	<br/>
+	<div *ngIf="is_edit">
+		<img src={{usuario.avatar}} width="60px" />
+	</div>
+	<br/>
+	<input type="submit" value="{{titulo}}" [disabled]="!fromUser.form.valid" class="btn btn-success"/>
+</form>

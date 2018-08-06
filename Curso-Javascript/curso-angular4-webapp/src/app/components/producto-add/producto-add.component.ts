@@ -11,14 +11,14 @@ import { Usuario } from '../../models/producto';
 })
 export class ProductoAddComponent implements OnInit {
 	public titulo: string;
-	public user: Usuario;
+	public usuario: Usuario;
   constructor(
     private _productoService: ProductoService,
     private _route: ActivatedRoute,
     private _router: Router
     ) { 
   	this.titulo = 'Crear un Nuevo Producto';
-  	this.user = new Usuario('','');
+  	this.usuario = new Usuario('','');
   }
 
   ngOnInit() {
@@ -26,8 +26,8 @@ export class ProductoAddComponent implements OnInit {
   }
 
   onSubmit(){
-  	console.log(this.user);
-    this._productoService.addProducto(this.user).subscribe(
+  	console.log(this.usuario);
+    this._productoService.addProducto(this.usuario).subscribe(
       response => {
         this._router.navigate(['/productos']);
       },
