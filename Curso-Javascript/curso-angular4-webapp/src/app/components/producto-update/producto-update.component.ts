@@ -39,4 +39,17 @@ export class ProductoUpdateComponent implements OnInit {
       });
     })
   }
+
+  onSubmit(){
+    console.log(this.usuario);
+    this._productoService.addProducto(this.usuario).subscribe(
+      response => {
+        this._router.navigate(['/productos']);
+      },
+      error =>{
+        console.log(<any>error)
+      }
+    );
+  }
+
 }
