@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost:27017/curso_mean_social', { useNewUrlParse
 
 		//crear servidor 
 		app.listen(port, () => {
-			console.log('servidor corriendo correctamente en la url: localhost: 3700');
+			console.log('servidor corriendo correctamente en la url: localhost: 3800');
 		});
 
 	})
