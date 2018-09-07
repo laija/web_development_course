@@ -9,6 +9,9 @@ var path = require('path');
 var jwt = require('../services/jwt');
 // para indicar que es un modelo la primera letra de la variable se ponen en mayuscula 
 var User = require('../models/user');
+var Publication = require('../models/publication');
+
+var Follow = require('../models/follow');
  
 // Metodos de prueba 
 function home(req, res) {
@@ -103,7 +106,7 @@ function loginUser(req, res){
 
 }
 
-// datos de un usuario 
+// Conseguir datos de un usuario 
 
 function getUser(req, res){
 	// cuando llegan datos por la url utilizamos params, cuando llegan datos por post or put utilizamos body
@@ -113,8 +116,35 @@ function getUser(req, res){
 
 		if(!user) return res.status(404).send({message: 'El usuario no existe'});
 
-		return res.status(200).send({user});
-	})
+		// req.user.sub es el user del usuario identificado  
+		followThisUser(req.user.sub, userId).then((value) => {
+			user.password = undefined;
+			return res.status(200).send({
+				user,
+				following: value.following,
+				followed: value.followed,
+			});
+		});
+		/*
+		Follow.findOne({"user": req.user.sub, "followed" : userId}).exec((err, follow) => {
+			if(err) return status(500).send({message: 'Error al comprobar el seguimiento'});
+			return res.status(200).send({user, follow});
+		});
+		*/
+	});
+}
+
+async function followThisUser( identity_user_id, user_id ) {
+
+	var following = await Follow.findOne({"user": identity_user_id, "followed" : user_id });
+	
+	// para ver si ese usuario nos sigue a nosotros 
+	var followed  = await Follow.findOne({"user": user_id , "followed" : identity_user_id});
+	
+	return{
+		following,
+		followed
+	}
 }
 
 // Devolver un listado de usuarios paginado  
@@ -134,12 +164,65 @@ function  getUsers(req, res){
 
 		if(!users) return res.status(404).sed({message: 'No hay usuarios disponibles'});
 
-		return  res.status(200).send({
-			usuarios: users, 
-			total,
-			pages: Math.ceil(total/itemsPerPage)
+		followUserIds(identity_user_id).then((value)=>{
+
+			return  res.status(200).send({
+				usuarios: users, 
+				user_following: value.following,
+				user_follow_me: value.followed,
+				total,
+				pages: Math.ceil(total/itemsPerPage)
+			});
 		});
 	});
+}
+
+
+async function followUserIds(user_id){
+	var following = await Follow.find({"user":user_id}).select({'_id': 0, '__v':0, 'user':0});
+
+	var follows_clean = [];
+	following.forEach((follow) => {
+		follows_clean.push(follow.followed);
+	});
+	//console.log(follows_clean);
+
+	var followed = await Follow.find({"followed":user_id}).select({'_id': 0, '__v':0, 'followed':0});
+	var followed_clean = [];
+	followed.forEach((follow) => {
+		followed_clean.push(follow.user);
+	});
+	//console.log(followed_clean);
+
+	return {
+		following: follows_clean,
+		followed: followed_clean
+	}
+}
+
+function getCounters(req, res){
+	
+	var userId= req.user.sub;
+	if(req.params.id){
+		userId = req.params.id;
+	}
+	console.log("it is getting here");
+	getCountFollow(userId).then((value) => {
+		return res.status(200).send(value);
+	});	
+}
+
+async function getCountFollow(user_id){
+	var following = await Follow.count({"user":user_id})
+	var followed = await  Follow.count({"followed": user_id});
+
+	var publications = await Publication.count({"user": user_id})
+
+	return{
+		following,
+		followed,
+		publications
+	}
 }
 
 // Edicion de datos de usuario 
@@ -167,12 +250,9 @@ function updateUser(req, res){
 }
 
 // subir archivos de imagen/avatar de usuario 
-
 function uploadImage(req, res){
 	var userId =  req.params.id;
 	var update = req.body;
-
-
 
 	if(req.files){
 		var file_path = req.files.image.path; // ruta del archivo 
@@ -220,7 +300,6 @@ function getImageFile(req, res){
 			return res.status(200).send({message: 'No existe la imagen...'})
 		}
 	});
-
 }
 
 
@@ -236,5 +315,8 @@ module.exports = {
 	getUsers,
 	updateUser,
 	uploadImage,
-	getImageFile
+	getImageFile,
+	followThisUser,
+	followUserIds,
+	getCounters
 } 
