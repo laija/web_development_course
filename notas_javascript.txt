@@ -1,0 +1,180 @@
+
+Single Threaded, Synchronous Execution
+Single Threaded: one comman at a time
+Synchronous Execution: one line at a time and in the order it appears 
+
+Invocaition: running/calling a functio, in java script, by using parenthesis()
+
+Syntax parser:
+A program that read your code and determines what it does and if its grammar is valis. Your code isn't magic. Someone else wrote a program to translate if for the computer. 
+
+Execution contex: 
+A wrapper to help manage the code that is running, a section of the code that is running. There a lots of lexical environments. Which one is currently running is managed via execution contexts. It can contain things beyond what you've written in your code. You get a new one every time you get execute a function.
+
+There are two phaces whne it comes to the execution contex within, creation phase to seat up funciton and memory, and the execution phase that has all the things set up in the preation phase plus executing the code line by line.   
+
+
+lexical environtment:
+Where something sits Physically in the code you write. Lexical mean having to do with words or grammar. A lexical environment exists in programming languages in which where you write something is important. 
+
+name/value pair: 
+A name which maps to an unique value. The name may be defined more than once, but only can have one value in any given context. That value  may be more name/value pairs. 
+
+Object:
+a collection of name value pairs. The simplest definition when talking about Javascript. 
+
+Global execution contex:
+It creates a global object and creates a variable for me called 'this'.
+
+Global object/window/this:
+Is created by java script engine for each tab, will be a global object. this is a variable that refers to the window object. 
+
+Outer reference: Is the reference to an that phisically sitting one level above.
+
+
+Outer environment: Is the execution contex that phisically sitting one level above.
+
+
+Reference to Outer environment:
+Is a reference to where the code was written in the document
+
+Hoisting: 
+This mean java script reserves all the space in memory for variables and functions in memory before executing the code, but functions are accesible even before they are defined but variables are undifined until a value is assigned to them in the code, that is why when you access the variable before is assigned you get an undefined.,
+
+Single threaded:
+one command at a time. Under the hood of the browser, maybe not. 
+
+Synchronous:
+One at a time and order. 
+
+execution stack: Are the execution context one on top of the otherm and on top is the one that is currently running, once is over the gets pop off the stack for the previous function to continue.
+
+
+Scope Chain:
+Is the link between the outer environment reference 
+
+Scope: means where can I Access the variable 
+Chain: are the links or outer environtment references, lexical that is where it was phicically written in the code. 
+
+coercion: Converting a value from one type to another. This happens quite often in Javascript because it's dynamically typed. 
+
+==	compares even even if the variables are different type because coercion, like 3 - '3', false == 0.
+===	Etrict equality: compares 2 things and doesnt try to converts the variables. "3" === 3
+
+Object literal 
+var person ={}, this creates an empty object  
+
+Name space:
+A container for variables and functions. Typically to keep variables and functions with the same name separate. 
+
+First class functions:
+Everything you can do with other typer you can do with functions. Assign them to variables, pass them around, create them on the fly.
+
+Expresion: 
+An unit of code that result in a value. It doesn't have to save to a variable.
+
+valores asocidos con algo vacios regresan un false like  0, undefined, null, ""
+
+cuando se asigana una funcion como el valor de una variable, no es necesario asignarle un nombre porque el nombre de la variable sirve para identificar la seccion de memoria en la que se encuentra la funcion, y el nombre de la viaraible es usado como el nombre de la function 
+
+First class functions:
+Functions that can be pass around, created on the fly, used and varibles can be equal to them 
+
+By value vs By reference:
+To change a value object creating a new memory space use the =
+c = { greeting: 'howdy'};
+If the value is a primitive in an object literal is called a property, but if the value is a function is called a method.
+all objects interact by reference when equal to each other or passing to a function 
+The equal operator sets up a new memory space in case you change some property of an object, and in case it shares the reference with another object, that property will have a new address in memeory for the same property of the objects sharing the same reference.
+
+Mutate: 
+to change something, Immutable means it can't be changed. 
+
+This 
+This relates to the objec in where the function/methos is executing, this makes reference to the object in where the function is executing and will refer to an particular object if its method calls this variable. Makes reference to an object if the method is attached to the object. 
+
+Arguments:
+The parameters you pass to a function. Javascript gives you a keyword of the same name which contains them all. 
+
+language = language || 'en'; // if the parameter language is empty it sets to 'en' because valores asocidos con algo vacios regresan un false like  0, undefined, null, ""
+
+Syntax parser: deletes extra spaces and gives format to the text/code.
+
+Function statement:
+Are functions happens as a new statement and function is the first word and is loaded in memory and needs to be invoqued  
+
+Function expression:
+could be a variable equal to a function with no name, is not put into memory but it's created on the fly 
+
+Immediate invoked function expression (IIFE) / Self invoking function expression::
+Is a function that is call exactly at after it is created in the same statemente, or right after is defined, like when a variable is equal to a anonimous function and then called by () in the same line. 
+
+Empression:
+Something that returns a value
+
+Closures:
+The variables that it would normally have reference to anyway even tought these execution contex are gone, this phenomenon of closing in all the variables that is supposed to have access to is called closure. 
+This happens when varibles created on a parent related execution contex are accesible from an execution content created inside the execution content parent that is no longer running (our of the execution extac) but variables are in memory. 
+
+Factory:
+Is a function that returns or mix other things for me. 
+
+Callback:
+Is when a function completes its execution and once is done executes the function it was passed as a parameter. 
+
+Callback function:
+A function you give to another function, to be run when the other funtion is finished. So the function you call(i.e. invoke). 'calls back' by calling the function you gave it when it finishes. 
+
+bind():
+Using bind we pass the  object we want the variable this to be or we can preset a arameter for a function. 
+var logPersonName = logName.bind(person); 
+logPersonName('en','es');
+
+var arr5 = mapforEach(arr1, checkPastLimit.bind(this, 1));
+
+
+call()/apply():
+They work replacing the reference object setting up the variable this as below. 
+logName.call(person,'en', 'es');
+logName.apply(person, ['en', 'es']);
+
+Function borrowing:
+It is when you can borrow a method from another object to use it in an object that doesnt have it. 
+console.log(person.getFullName.apply(person2));
+
+Function currying:
+creating a copy of a function but with some preset parameters, very useful in mathematical situations. 
+
+Inheritance:
+One object gets access to the properties and methods of another object.
+
+Prototype:
+is an object that stands on its own related to an object/function, this object has also properties, and this prototype can be related to another prototype, and properties can be call making reference to the main object and the property of the prototype  object.prod2. And the Object is the bottom of all prototypes
+
+Reflection:
+An object can look at itsef, listing and changing its properties and methods. 
+
+Java doesnt really have classes 
+
+Function contructor:
+A normal function that is used to construct objects. The 'this' variables points a new empty object, and that object is returnd from the function automatically. As a convention they are written with a capital letter
+
+Build-in function constructurs:
+var a  = new string("Carlo");
+
+Primitives are not objects, but the javascript engine box it into a javascript object to be able to use the methods related to a string object. 
+
+for arrays use a c for from i to array_name.lenth
+
+Polyfill:
+Code that adds a feature which the engine may lack. 
+
+Syntactic Sugar:
+A different way to type something that doesn't change how it works under the hood
+
+Jquery lets you manipulate the DOM that is in memory 
+
+Method chaining:
+Calling one method after another, and each methos affects the parect object. So obj.methos1().method2() where both methods end up with a 'this' variable pointing at 'obj'.this is like piping. 
+
+

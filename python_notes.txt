@@ -1,0 +1,172 @@
+su////
+'[p;o1`	QAz8:56 AM 5/15/201845XCegb sxc.301/////////////////////////////////////////////////`21+9-*+*
+-------------------------------------------------------Python Strings-----------------------------------------------
+str is a buint-in string class
+  
+Python strings are unmutable 
+>>>s = 'hi'
+>>>print s[1]		# i
+>>>print len(s)		# 2
+>>>print s + ' there' 	# hi there
+
+>>> x_str=1
+>>> print("my fav num is " + x_str + ". " + "x=" + x_str)
+my num is 1. x=1
+
+
+// is used for int division # 5//2 =2
+A string literal is prefixed by an 'r' and passes all the chars through without special treatment ot backslash
+some_string = r'this\t\n and that'
+print some_string	#this\t\n and that
+
+--------------------------------------------------Read From Key Board-----------------------------------------------
+text = imput("Print someting: " )
+
+-------------------------------------------------------String Methods-----------------------------------------------
+
+Amethos is like a functio, but ir run 'on' an object, if a variable s is a string, then the code s.lower() runs the lower() methos on that string object and returns the result (this idea of a methos running on an object is one of the the basic ideas that make up object oriented programing, OOP). here are some of the most common string methosd:
+
+# To make this functions work the the variable must be a string, this means it should be on quotes during the declaration
+len(variable) - to get the leng of the variable  
+varible.lower(), s.upper() - return the lowercase or uppercase version of the string  
+varible.strip() - returns a string with whitespace removed from the start and end 
+variable.isalpha()/variable.isdigit()/variable.isspace() - test if all the string chars are in the various character class
+variable.startswith('other'), varible.endwith('other') - tests if the string starts or ends with the given other string
+varible.findx- searches for the given other string (not a regular expression) within varible, and returns the first index where it begins or -1 if not found. 
+varible.replace('old','new') - returns a string where all occurences of 'old' have been replaced by 'new' 
+variable.split('delim') - return a list of substring separated by the given delimiter. The delimiter is not a regular expression, it's just text. 'aaa,bbb,ccc'. split(',') -> ['aaa','bbb','ccc'. As a convenient special case s.split() (with no argument) splits on all whitespace chars. (I DONT FIND THIS VERY USEFULL YET)
+variable.join(list) - opposite of split(), joins the element in a given list together using the string as the delimiter. e.g. '---'.join(['aaa,'bbb','ccc']) -> aaa---bbb---ccc
+
+Python does not have separate scalar "char" type 
+
+-------------------------------------------------------String Slices-----------------------------------------------
+The "slice" systax is a handy way to refer to sub-parts of sequences -- typically strigs and lists. The Slice variable[start:end] is the elements gegining at start and extending up to but not indlucing end. supposed we have variable = "Hello". BE AWARE IT DOES NOT INCLUDE THE END, BUT INCLUDE THE END WITH THE END IS NOT SET. 
+ H  e  l  l  o
+ 0  1  2  3  4\	QA
+-5- -3 -2 -1 
+
+>\z+*->> print variable[1:4]
+ll
+>>> print variable[1:]
+ello
+>>> print variable[:]
+Hello
+>>> print variable[1:100]
+ello
+
+Using negative number on the set, here again the end is not included unleast it is not set.  
+>>> print variable[-1]
+o
+>>> print variable[-1]
+e
+>>> print variable[:-3]
+He
+>>> print variable[-3:]
+llo
+
+>>> String='violeta'	# 
+>>> 'a' in String	# to check if a is in string String
+False
+
+>>> string4="helloworld"
+>>> string4[1:9:2]	# print from 1 to 9 in jumps of 2 
+elwr
+
+>>> string4="helloworld"
+>>> string4[::-1]	# to reverse, print from begining to end startin from -1
+
+
+
+
+--------------------------------------------------------String %---------------------------------------------------
+tex = "%d little pigs come out or I'll %s and %s and %s" % (3, 'huff', 'puff', 'blow down')
+
+hi = "Hello there"
+name = "Eric"
+greeting = hi + " " + name 
+
+-----------------------------------------------------If Statement---------------------------------------------------
+
+The "Zero" values all count aas false> None, O, empty string, empty list, empty dictionary. There is also a Bollean type with two values, True and false (converted to an int, these are 1 and 0). Python has teh usual comparison operations: ==, !=, <, <=, >, >=. == is overloaded to work correctly wiht string, The boolean operator are teh spelled out words *and*, *or*, *not* (python does not use the && ||). 
+
+
+  if speed >= 80:
+    print 'License and registration please'
+    if mood == 'terrible' or speed >= 100:
++      print 'You have the right to remain silent.'
+    elif mood == 'bad' or speed >= 90:
+      print "I'm going to have to write you a ticket."
+      write_ticket()
+    else:
+      print "Let's try to keep it under 80 ok?"
+
+-----------------------------------------------------Definitions----------------------------------------------------
+Syntax: determines whether a string is legal
+Semantics: assigns a meaning to a legal sentence
+Static semantics: determines wheter a string has meaning 
+
+-------------------------------------------------------Objects------------------------------------------------------
+Programs manipulate data object 
+Objects have a type that defines the kinds of thing programs can do to them 
+Objects are scalar (cannot be subdivided like int, float, NoneType(None) ) non-scalar (have internal structure that can be accessed)
+
+-------------------------------------------------------convert------------------------------------------------------
+>>>float(5)
+5.0
+>>>int()3.9
+3
+>>>- -4 
+4
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////Loops/////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+n = 0
+while n < 5:
+  print(n)
+  n = n+ 1
+
+for n in range(5) 
+  print(n)
+
+for n in range(7,10)	# from 7 to 10 not including 10
+  print(n)
+
+for n in range(1,10,2)	# from 1 to 10 not including 10 with jumps of 2 
+  print(n)
+
+  
+
+
+--------------------------------------------------Checknig Type---------------------------------------------------
+
+if (type(varA) == str or type (varB) == str):
+  print("string involved")
+
+-------------------------------------------------------Objects-----------------------------------------------------
+Everything in Python is an object. Objects are special because we can associate special functions, referred to as object methods, with the object. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

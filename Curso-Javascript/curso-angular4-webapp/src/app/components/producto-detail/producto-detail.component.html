@@ -1,0 +1,13 @@
+<div *ngIf="!usuario">
+	<p>Cargando usuario...</p>
+</div>
+
+<div *ngIf="usuario">
+	<br/>
+	<div class="call-lg-4" *ngIf=usuario.avatar>
+		<img src={{usuario.avatar}}/>
+	</div>
+	<div class="call-lg-8">
+		<p>{{usuario.first_name}} {{usuario.last_name}}</p>
+	</div>
+</div>

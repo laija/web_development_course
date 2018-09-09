@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+		<meta charset="uft-8">
+		<title>Aprendiendo jQuery</title>
+	</head>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<!--Hya que incluit los estilos css de jquery-->
+	<link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.min.css">
+	<link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.structure.min.css">
+	<link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.theme.min.css">
+	<script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/06-interface.js"> </script>
+	<style>
+		.elemento{
+			width: 300px;
+			height: 200px;
+			border: 4px solid black;
+			background: lightblue;
+			margin: 20px;
+			float: left;
+		}
+
+		.lista-seleccionable li{
+			width: 80% ;
+			padding: 20px;
+			border: 1px solid #ccc;
+			list-style: none;
+			cursor: pointer;
+		}
+
+		#elemento-movido{
+			width: 10px;
+			padding: 10px;
+			border: 4px solid red;			
+		}
+
+		#area{
+			width: 30px;
+			padding: 30px;
+			border: 4px solid green;			
+		}
+
+		.elemento{
+			background: pink;
+			float: none;
+			display: none;
+		}
+
+		ul .ui-selecting{background: green;}
+		ul .ui-selected{background: blue;}
+	</style>
+	<body>
+		<h1>Aprendiendo jQuery - jQueryUI </h1>
+		<hr/>
+		<h3>Tooltip</h3>
+		<a href="#" id="mis-datos" title="Acceder a la seccion de mis datos de esta web">Mis Datos</a>
+		<hr/>
+
+		<hr/>
+		<h3>Cuadros de dialogo</h3>
+		<button id="lanzar-popup">Lanzame</button>
+		<div class="popup" title="Estas seguro?">
+			<p>Si continuas en el curso aprenderas mucho de javascript inevitablemente
+			</p>
+		</div>
+		<hr/>
+
+		
+		<h3>Calendario</h3>
+		<input type="text" id="calendario" />
+		<hr/>
+
+		<h3>Calendario</h3>
+		<div id="pestanas">
+			<ul>
+				<li><a href="#tabs-1"></a>Pestana 1</li>
+				<li><a href="#tabs-2"></a>Pestana 2</li>
+				<li><a href="#tabs-3"></a>Pestana 3</li>
+			</ul>
+			<div id="tabs-1"> Hola soy la primera pestana</div>
+			<div id="tabs-2"> Hola soy la segunda pestana</div>
+			<div id="tabs-3"> Hola soy la tercera pestana</div>
+		</div>
+		<hr/>
+
+		<button id="mostrar">Mostrar</button>
+		<div class="caja-efectos elemento"></div>
+
+		<div class="elemento-movido "></div>
+		<br>
+		<div id="area"></div>
+		<ul class="lista-seleccionable">
+			<li>GTA 5</li>
+			<li>Nedd for speed</li>
+			<li>Mario bross</li>
+			<li>Super mario</li>
+		</ul>
+		<div class="elemento">Hola, soy ellemento de la web 1</div>
+		<div class="elemento">Hola, soy ellemento de la web 2</div>
+		<div class="elemento">Hola, soy ellemento de la web 3</div>
+	</body>
+</htmal>

@@ -1,0 +1,12 @@
+    5  git init
+    6  git add -A
+    7  git commit -m "adding new project"
+    8  git push origin master
+    9  git remote add origin "https://github.com/laija/web_development_course.git"
+   29  ng generate component sidebar
+   43  ng g c posts
+   44  ng g c users
+   45  ng g c users
+   46  ng g c details
+   48  ng generate service data
+   49  npm install @angular/animation@latest --save

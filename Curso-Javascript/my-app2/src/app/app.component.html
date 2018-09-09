@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div [ngStyle]="{'background': config.fondo}">
+
+  <h1>
+    Bienvenido al {{title}}!
+  </h1>
+  <p>{{descripcion}}</p>
+  <!--<zapatillas></zapatillas>-->
+  <nav>
+  	<a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+    &nbsp;
+  	<a [routerLink]="['/zapatillas']" [routerLinkActive]="['active']">Zapatillas</a>
+  	&nbsp;
+  	<a [routerLink]="['/videojuego']" [routerLinkActive]="['active']">Videojuegos</a>
+    &nbsp;
+    <a [routerLink]="['/externo']" [routerLinkActive]="['active']">Externo</a>    
+    &nbsp;
+    <a [routerLink]="['/contacto']" [routerLinkActive]="['active']">Contacto</a>       
+  </nav>
+  <hr>
+  <router-outlet></router-outlet>
+</div>
+

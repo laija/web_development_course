@@ -1,0 +1,7 @@
+ {
+    // ... Other conf (see an example in https://github.com/remy/nodemon/blob/master/doc/sample-nodemon.md)
+    "watch": [
+      "C:\\Users\\luis.rojas\\Documents\\web_development_course\\Desarrollar una red social con JavaScript, Angular y NodeJS\\curso-mean-social\\api" // Set your directories/files to watch
+    ],
+    "exec": "npm run prestart && node server/index.js"
+ }

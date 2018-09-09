@@ -1,0 +1,18 @@
+<!--
+<videojuego *ngIf="mostrar_videojuegos"></videojuego>	
+<button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar</button>
+<button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Mostrar</button>
+-->
+<h2>{{titulo}}</h2>
+<p>{{listado}}</p>
+<button (click)="cambiarTitulo()">Cambiar titulo</button>
+<ul>
+	<li>GTA</li>
+	<li>Prince of Persia</li>
+	<li>Tekken</li>
+	<li>Mario</li>
+</ul>
+<button (click)="redirigir()">Leevame a zapatillas</button>
+<h3 *ngIf="nombre">Bienvenido {{nombre}}</h3>
+<h3 *ngIf="followers">Tus seguidores  son : {{followers}}</h3>
+
