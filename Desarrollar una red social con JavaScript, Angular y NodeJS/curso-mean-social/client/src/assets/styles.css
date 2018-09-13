@@ -14,7 +14,7 @@
 }
 
 .navigation .navbar {
-	border-radius: 8px !important;
+	border-radius: 0px !important;
 	background: #e53c37 !important;
 	border: none;
 }
@@ -23,3 +23,36 @@
 	color: white !important;
 }
 
+.active{
+	background: #cc1717;
+}
+
+.navigation .navbar a:hover{
+	background: #cc1717 !important;
+}
+
+.jumbotron{
+	padding: 25px;
+	border-radius: 20px;
+	text-align: center;
+}
+
+
+.btn-group-lg.btn.btn-lg {
+	margin: 5px !important;
+}
+
+.navigation .navbar .dropdown-menu *{
+	color: black !important;
+}
+
+.navigation-default .navbar-nav>.open>a,  .navbar-default .navbar-nav>.open>a:focus{
+	background: #cc1717 !important;
+}
+
+.navigation .navbar .dropdown-menu a:hover{
+	background: #eee !important;
+}
+.pointer{
+	cursor: pointer;
+}

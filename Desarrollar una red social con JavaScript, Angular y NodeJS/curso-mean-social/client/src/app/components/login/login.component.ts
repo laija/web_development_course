@@ -21,11 +21,12 @@ export class LoginComponent implements OnInit {
     private _userService: UserService
     ) { 
   	this.title = 'LogIn';
+    this.title = 'LogIn';
     this.user= new User("","","","","","","","");
   }
 
   ngOnInit() {
-  	console.log('Componente de login cargado');
+  	//console.log('Componente de login cargado');
   }
 
   onSubmit(){
@@ -36,10 +37,12 @@ export class LoginComponent implements OnInit {
         if(!this.identity || !this.identity._id){
           this.status = 'error';
         }else{
+          //console.log(response);
           this.status = 'success';
           //Persistir datos del usuario 
-          console.log('algp');
+          localStorage.setItem('identity',JSON.stringify(this.identity));
           //get token
+          this.getToken();
         }
       },
       error =>{
@@ -53,5 +56,29 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  getToken(){
+      this._userService.signup(this.user, 'true').subscribe(
+      response => {
+        //console.log(response);
+        this.token = response.token;
+        if(this.token.length <= 0){
+          this.status = 'error';
+        }else{
+          this.status = 'success';
+          //Persistir Token del usuario 
+          localStorage.setItem('token',JSON.stringify(this.token));
+          //Con seguir los contadores o estadisticas del usuario 
+          this._router.navigate(['/'])
+        }
+      },
+      error =>{
+        var errorMessage = <any>error;
+        console.log(errorMessage);
 
+        if(errorMessage != null){
+          this.status = 'error';
+        }
+      }
+    );
+  }
 }
