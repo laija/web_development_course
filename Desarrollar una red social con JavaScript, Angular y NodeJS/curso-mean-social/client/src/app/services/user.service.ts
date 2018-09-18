@@ -52,4 +52,28 @@ export class UserService{
 		}
 		return this.token;
 	}
+/*
+	getStats(){
+		var stats = JSON.parse(localStorage.getItems('stats'));
+
+		if(stats != "undefines"){
+			this.stats = stats;
+		}else{
+			this.stats = null;
+		}
+
+		return this.stats;
+	}*/
+
+	getCounter(userId = null): Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type','application/json').set('Autorization', this.getToken());
+		console.log('-----------------------');
+		console.log(this.getToken());
+		console.log('-----------------------');
+		if(userId != null){
+			return this._http.get(this.url+'counters/'+userId, {headers: headers});
+		}else{
+			return this._http.get(this.url+'counters', {headers: headers});
+		}
+	}
 }

@@ -67,8 +67,11 @@ export class LoginComponent implements OnInit {
           this.status = 'success';
           //Persistir Token del usuario 
           localStorage.setItem('token',JSON.stringify(this.token));
-          //Con seguir los contadores o estadisticas del usuario 
-          this._router.navigate(['/'])
+          console.log('----------------');
+          console.log(this.token);
+          //Con seguir los contadores o estadisticas del usuario
+          this.getCounters();
+          //this._router.navigate(['/'])
         }
       },
       error =>{
@@ -80,5 +83,19 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  getCounters(){
+    this._userService.getCounter().subscribe(
+      response =>{
+        console.log(response);
+        console.log('luis');
+        //this._router.navigate(['/'])
+      },
+      error =>{
+        console.log(<any>error);
+        console.log('laija');
+        }
+      );
   }
 }
