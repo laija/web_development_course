@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public status: string;
   public identity;
   public token;
+  public stats;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router, 
@@ -37,8 +38,6 @@ export class LoginComponent implements OnInit {
         if(!this.identity || !this.identity._id){
           this.status = 'error';
         }else{
-          //console.log(response);
-          this.status = 'success';
           //Persistir datos del usuario 
           localStorage.setItem('identity',JSON.stringify(this.identity));
           //get token
@@ -64,14 +63,11 @@ export class LoginComponent implements OnInit {
         if(this.token.length <= 0){
           this.status = 'error';
         }else{
-          this.status = 'success';
           //Persistir Token del usuario 
           localStorage.setItem('token',JSON.stringify(this.token));
-          console.log('----------------');
-          console.log(this.token);
           //Con seguir los contadores o estadisticas del usuario
           this.getCounters();
-          //this._router.navigate(['/'])
+          this._router.navigate(['/'])
         }
       },
       error =>{
@@ -88,13 +84,12 @@ export class LoginComponent implements OnInit {
   getCounters(){
     this._userService.getCounter().subscribe(
       response =>{
-        console.log(response);
-        console.log('luis');
-        //this._router.navigate(['/'])
+        this.status = 'success';
+        localStorage.setItem('stats',JSON.stringify(response));
+        this._router.navigate(['/'])
       },
       error =>{
         console.log(<any>error);
-        console.log('laija');
         }
       );
   }

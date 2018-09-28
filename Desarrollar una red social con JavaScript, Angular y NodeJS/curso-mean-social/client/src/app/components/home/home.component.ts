@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-  	console.log('homs.componente cargado');
+  	console.log('home.componente cargado');
   }
 
 }

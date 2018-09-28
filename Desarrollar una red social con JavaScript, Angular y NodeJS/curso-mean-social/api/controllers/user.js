@@ -84,7 +84,7 @@ function loginUser(req, res){
 			bcrypt.compare(password, user.password, (err, check) =>{
 				if(check){
 					// Devolver datos de susuario 
-					if(params.gettoken){
+					if(params.gettoken == "true"){
 						// Generar y Devolver token
 
 						return res.status(200).send({
@@ -180,7 +180,7 @@ function  getUsers(req, res){
 
 async function followUserIds(user_id){
 	var following = await Follow.find({"user":user_id}).select({'_id': 0, '__v':0, 'user':0});
-
+ 
 	var follows_clean = [];
 	following.forEach((follow) => {
 		follows_clean.push(follow.followed);
@@ -206,7 +206,6 @@ function getCounters(req, res){
 	if(req.params.id){
 		userId = req.params.id;
 	}
-	console.log("it is getting here");
 	getCountFollow(userId).then((value) => {
 		return res.status(200).send(value);
 	});	
@@ -239,14 +238,28 @@ function updateUser(req, res){
 		return res.status(500).send({message: 'No tienes permiso para actualizar los datos del usuario'});
 	}
 
-	// se utra true pare regresar objeto abtualizado 
-	User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
-		if(err) return res.status(500).send({message: 'Error en la peticion'});
+	User.find({ $or: [
+		{email: update.email.toLowerCase()}, 
+		{nick: update.nick.toLowerCase()}
+	]}).exec((err, users)=>{
+		var user_isset = false;
+		users.forEach((update) =>{
+			if(update && update._id != userId) user_isset = true;
+		});
+		
+		if(user_isset) return res.status(404).send({message: 'Data is in use already'});
+		
+		// se utra true pare regresar objeto actualizado 
+		
+		User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) =>{
+			if(err) return res.status(500).send({message: 'Error en la peticion'});
 
-		if(!userUpdated) return res.status(404),sebd({message:'No se aha podido actualizar el usuario'});
+			if(!userUpdated) return res.status(404),sebd({message:'No se aha podido actualizar el usuario'});
 
-		return res.status(200).send({user: userUpdated});
+			return res.status(200).send({update: userUpdated});
+		});
 	});
+
 }
 
 // subir archivos de imagen/avatar de usuario 
