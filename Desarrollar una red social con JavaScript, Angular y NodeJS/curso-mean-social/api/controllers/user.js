@@ -238,12 +238,13 @@ function updateUser(req, res){
 		return res.status(500).send({message: 'No tienes permiso para actualizar los datos del usuario'});
 	}
 
+//	console.log(update);
 	User.find({ $or: [
 		{email: update.email.toLowerCase()}, 
 		{nick: update.nick.toLowerCase()}
-	]}).exec((err, users)=>{
+	]}).exec((err, user)=>{
 		var user_isset = false;
-		users.forEach((update) =>{
+		user.forEach((update) =>{
 			if(update && update._id != userId) user_isset = true;
 		});
 		
@@ -266,7 +267,6 @@ function updateUser(req, res){
 function uploadImage(req, res){
 	var userId =  req.params.id;
 	var update = req.body;
-
 	if(req.files){
 		var file_path = req.files.image.path; // ruta del archivo 
 		var file_split = file_path.split('\\'); // nombr del archivo 
@@ -276,7 +276,7 @@ function uploadImage(req, res){
 
 		// si user id es diferente al rea.user.sub
 		if(userId != req.user.sub){
-			return removeFilesofUpload(res, file_path, 'No tienes permiso para actualizar los datos del usuario');
+			return removeFilesofUpload(res, file_path, 'You dont have permissions to upadte this user');
 		}
 
 		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'gif'){
@@ -289,10 +289,10 @@ function uploadImage(req, res){
 				return res.status(200).send({user: userUpdated});
 			});
 		}else{
-			return removeFilesofUpload(res, file_path, 'Extension no valida');
+			return removeFilesofUpload(res, file_path, 'Invalid extention');
 		}
 	}else{
-		return res.status(200).send({message: 'No se han subido archivos o imagenes'})
+		return res.status(200).send({message: 'File was not uploaded'})
 	}
 }
 

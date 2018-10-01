@@ -37,9 +37,12 @@
 				The email is required
 			</span>
 		</p>
+		<div *ngIf="user.image">
+			<img src="{{ url + 'get-image-user/' + user.image}}"/>
+		</div>
 		<p>
 			<label>Profile Picture</label>
-			<input type="file" placeholder="Upload picture" />
+			<input type="file" placeholder="Upload picture" (change)="fileChangeEvent($event)"/>
 			<span *ngIf="!email.value && email.touched">
 				The email is required
 			</span>
