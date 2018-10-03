@@ -55,7 +55,7 @@ export class UserService{
 	}
 
 	getStats(){
-		let stats = JSON.parse(localStorage.getItems('stats'));
+		let stats = JSON.parse(localStorage.getItem('stats'));
 
 		if(this.stats != "undefines"){
 			this.stats = stats;
@@ -87,11 +87,11 @@ export class UserService{
 		return this._http.get(this.url+'users/'+page,{headers:headers});
 	}
 
-	getUser(page=null): Observable<any>{
+	getUser(id): Observable<any>{
 		let headers = new  HttpHeaders().set('Content-Type','application/json')
 		.set('Authorization', this.getToken());
 
-		return this._http.get(this.url+'user/'+page,{headers:headers});
+		return this._http.get(this.url+'user/'+id,{headers:headers});
 	}
 
 }

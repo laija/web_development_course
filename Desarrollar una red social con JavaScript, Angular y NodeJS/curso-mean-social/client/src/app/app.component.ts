@@ -1,13 +1,14 @@
 import { Component, OnInit, DoCheck  } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { UserService } from './services/user.service';
+import { PublicationService } from './services/publication.service';
 import { GLOBAL } from './services/global';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [UserService]
+  providers: [UserService, PublicationService]
 })
 export class AppComponent implements OnInit, DoCheck{
   public title: string;
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit, DoCheck{
 
   constructor(
     private _userService:UserService,
+    private _publicationService:PublicationService,
     private _route: ActivatedRoute,
     private _router: Router
     ){
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit, DoCheck{
 
   ngOnInit(){
   	this.identity = this._userService.getIdentity();
-  	console.log(this.identity);
+  	//console.log(this.identity);
   }
 
   ngDoCheck(){
