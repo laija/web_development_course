@@ -40,19 +40,19 @@ function getPublications(req, res){
 	var params = req.body;
 	var page = 1;
 	if(req.params.page){
-		page = req.params,page;
+		page = req.params.page;
 	}
-
 	var itemsPerPage = 4;
 	//var following = 
 	Follow.find({user: req.user.sub}).populate('followed').exec((err, follows) =>{
-
 		var follows_clean = [];
 
 		follows.forEach((follow) => {
 			
 			if(follow.followed) follows_clean.push(follow.followed._id);
 		});
+
+		follows_clean.push(req.user.sub);
 
 		Publication.find({user: {"$in": follows_clean}}).sort('-created_at').populate('user').paginate(page, itemsPerPage, (err, publications, total) => {	
 		
@@ -62,6 +62,7 @@ function getPublications(req, res){
 				total_items: total, 
 				pages: Math.ceil(total/itemsPerPage),
 				page: page,
+				items_per_page: itemsPerPage,
 				publications
 			});
 		});

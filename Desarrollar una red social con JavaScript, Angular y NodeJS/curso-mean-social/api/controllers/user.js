@@ -112,7 +112,7 @@ function getUser(req, res){
 	// cuando llegan datos por la url utilizamos params, cuando llegan datos por post or put utilizamos body
 	var userId = req.params.id;
 	User.findById(userId, (err, user) => {
-		if(err) res.status(500).send({message: 'Error en la peticion'});
+		if(err) return res.status(500).send({message: 'Error en la peticion'});
 
 		if(!user) return res.status(404).send({message: 'El usuario no existe'});
 

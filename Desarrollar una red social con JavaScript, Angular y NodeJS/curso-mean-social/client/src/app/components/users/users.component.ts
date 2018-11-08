@@ -34,7 +34,7 @@ export class UsersComponent implements OnInit {
   		private _userService: UserService,
       private _followService: FollowService
   	) {
-  	this.title = 'Pople';
+  	this.title = 'People';
     this.url = GLOBAL.url;
   	this.identity = this._userService.getIdentity();
   	this.token = this._userService.getToken();

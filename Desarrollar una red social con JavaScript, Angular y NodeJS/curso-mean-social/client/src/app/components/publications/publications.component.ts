@@ -7,13 +7,13 @@ import { PublicationService } from '../../services/publication.service';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.css'],
+  selector: 'app-publications',
+  templateUrl: './publications.component.html',
+  styleUrls: ['./publications.component.css'],
   providers: [UserService, PublicationService]
 })
 
-export class TimelineComponent implements OnInit {
+export class PublicationsComponent implements OnInit {
 	public identity;
 	public token;
 	public title: string;
@@ -32,7 +32,7 @@ export class TimelineComponent implements OnInit {
   	private _userService: UserService,
     private _publication: PublicationService
   	) {
-  		this.title = 'Timeline';
+  		this.title = 'Publications';
   		this.identity = this._userService.getIdentity();
   		this.token = this._userService.getToken();
   		this.url = GLOBAL.url;
@@ -47,6 +47,7 @@ export class TimelineComponent implements OnInit {
   getPublications(page,adding = false){
     this._publication.getPublications(this.token, page).subscribe(
       response =>{
+        console.log(response);
         if(response.publications){
           this.total = response.total_items;
           this.pages = response.pages;
@@ -86,7 +87,4 @@ export class TimelineComponent implements OnInit {
     this.getPublications(this.page, true);
   }
 
-  refresh(event){
-    this.getPublications(1);
-  }
 }

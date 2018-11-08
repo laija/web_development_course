@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
       response =>{
         this.status = 'success';
         localStorage.setItem('stats',JSON.stringify(response));
-        this._router.navigate(['/'])
+        this._router.navigate(['/']);
       },
       error =>{
         console.log(<any>error);
