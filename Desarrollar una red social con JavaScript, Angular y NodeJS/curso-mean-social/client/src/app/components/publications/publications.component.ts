@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Publication } from '../../models/publication';
 import { GLOBAL } from '../../services/global';
@@ -26,6 +26,8 @@ export class PublicationsComponent implements OnInit {
   public publications: Publication[]; 
   public noMore = false;
 
+  @Input() user:  string; 
+
   constructor(
   	private _route: ActivatedRoute,
   	private _router: Router,
@@ -40,14 +42,13 @@ export class PublicationsComponent implements OnInit {
   	}
 
   ngOnInit() {
-    this.getPublications(this.page);
+    this.getPublicationsUsingUser(this.user, this.page);
   }
 
 
-  getPublications(page,adding = false){
-    this._publication.getPublications(this.token, page).subscribe(
+  getPublications(user, page,adding = false){
+    this._publication.getPublicationsUser(this.token, user, page).subscribe(
       response =>{
-        console.log(response);
         if(response.publications){
           this.total = response.total_items;
           this.pages = response.pages;
@@ -78,13 +79,46 @@ export class PublicationsComponent implements OnInit {
     );
   }
 
+  getPublicationsUsingUser(user, page,adding = false){
+    this._publication.getPublicationsByUser(this.token, user, page).subscribe(
+      response =>{
+        console.log(response.publications)
+        if(response.publications){
+          this.total = response.total_items;
+          this.pages = response.pages;
+          this.itemsPerPage = response.items_per_page;
+          if(!adding){
+            this.publications = response.publications;
+          }else{
+            var arrayA = this.publications;
+            var arrayB = response.publications;
+            this.publications = arrayA.concat(arrayB);
+            $("html, body").animate({scrollTop: $('body').prop("scrollHeight")}, 500);
+
+          }
+        }else{
+          this.status = 'error';
+        }
+      }, 
+      error =>{
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+        if(errorMessage != null){
+          this.status = 'error';
+        }
+      }
+    );
+  }
+  
+
   viewMore(){
+    console.log(this.publications.length)
     if(this.publications.length == this.total){
       this.noMore = true;
     }else {
       this.page +=1 ;
     }
-    this.getPublications(this.page, true);
+    this.getPublicationsUsingUser(this.user, this.page, true);
   }
 
 }

@@ -5,6 +5,7 @@ import { Follow } from '../../models/follow';
 import { UserService } from '../../services/user.service';
 import { FollowService } from '../../services/follow.service';
 import { GLOBAL } from '../../services/global';
+import * as $ from 'jquery'; 
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,8 @@ export class ProfileComponent implements OnInit {
 	public token;
 	public url;
 	public stats;
-	public follow;
+	public followed;
+  public following;
 
 
   constructor(
@@ -33,6 +35,8 @@ export class ProfileComponent implements OnInit {
   	this.identity = this._userService.getIdentity();
   	this.token = this._userService.getToken();
   	this.url = GLOBAL.url;
+    this.following = false;
+    this.followed = false;
 
   }
 
@@ -52,6 +56,26 @@ export class ProfileComponent implements OnInit {
   	this._userService.getUser(id).subscribe(response =>{
   		if(response.user){
   			this.user = response.user;
+        if(response.following){
+          if(response.following._id){
+            this.following = true;
+          }else {
+            this.following = false;
+          }
+        }else {
+            this.following = false;
+        }
+
+        if(response.followed){
+          if(response.followed._id){
+            this.followed = true;
+          }else {
+            this.followed = false;
+          }
+        }else {
+            this.followed = false;
+        }
+
   		}else{
   			this.status = 'error' ;
   		}
@@ -70,6 +94,42 @@ export class ProfileComponent implements OnInit {
   			console.log(<any>error);
   		}
   	)
+  }
+
+  followUser(followed){
+    var follow  = new Follow('',this.identity._id,followed);
+    this._followService.addFollow(this.token, follow).subscribe(
+      repsonse =>{
+        this.following = true;
+
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
+
+  unfollowUser(followed){
+    this._followService.deleteFollow(this.token, followed).subscribe(
+      response =>{
+        this.following = false;
+      },
+      error =>{
+        console.log(<any>error);
+      }
+    );
+  }
+
+  public followUserOver;
+
+  mouseEnter(user_id){
+    this.followUserOver = user_id;
+    console.log("entering");
+  }
+
+  mouseLeave(){
+    this.followUserOver = 0;
+    console.log("GETTING OUT");
   }
 
 }
