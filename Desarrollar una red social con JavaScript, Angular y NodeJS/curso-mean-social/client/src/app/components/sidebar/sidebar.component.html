@@ -7,7 +7,7 @@
 		<img src="assets/user.jpg" class="avatar-default" *ngIf="!identity || identity.image.includes('null')"/>	
 	</div>
 	<div class="name-surname pull-left">
-		<a href="#" class="username">
+		<a [routerLink]="['/profile',identity._id]" class="username">
 			{{identity.name +''+ identity.surname}}
 		</a>
 		<p class="nickname">{{identity.nick}}</p>
@@ -16,7 +16,7 @@
 	<div class="clearfix"></div>
 	<div class="stats" *ngIf="stats">
 		<div class="following-data">
-			<a href="#">
+			<a  [routerLink] = "['/following', identity._id, 1]">
 				<span class="label-stats">
 					Following
 				</span>
@@ -28,7 +28,7 @@
 	</div>
 	<div class="stats" *ngIf="stats">
 		<div class="following-data">
-			<a href="#">
+			<a  [routerLink] = "['/followed', identity._id, 1]">
 				<span class="label-stats">
 					Followers
 				</span>
@@ -40,7 +40,7 @@
 	</div>	
 	<div class="stats" *ngIf="stats">
 		<div class="following-data">
-			<a href="#">
+			<a [routerLink]="['/profile',identity._id]">
 				<span class="label-stats">
 					Publications
 				</span>
@@ -54,16 +54,16 @@
 
 <!--Formulation de publicaciones-->
 
-<div id="new-publication" class="col-lg-4 panel panel-default pull-left ">
+<div id="new-publication" class="col-lg-4 panel panel-default pull-right ">
 	<div class="alert alert-success" *ngIf="status == 'success'">
 		Publication posted
 	</div>
 	<div class="alert alert-danger" *ngIf="status == 'error'">
 		Publication not posted
 	</div>
-	<form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm);sendPublication($event)" class="col-lg-10">
+	<form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm, $event)" class="col-lg-10">
 		<p>
-			<label>What are you thinking</label>
+			<label>What are you thinking?</label>
 			<textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>
 			<span *ngIf="!text.valid && text.touched">
 				The text in the publication is mandatory
@@ -71,7 +71,7 @@
 		</p>
 		<p>
 			<label>Upload a picture</label>
-			<input type="file" placeholder="Upload picture">
+			<input type="file" placeholder="Upload picture" (change)="fileChangeEvent($event)">
 		</p>
 		<input type="submit" value="Enviar" class="btn btn-success" [disabled]="!newPubForm.form.valid"
 		>

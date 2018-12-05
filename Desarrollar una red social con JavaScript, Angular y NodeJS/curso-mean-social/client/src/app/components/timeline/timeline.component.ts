@@ -25,12 +25,13 @@ export class TimelineComponent implements OnInit {
   public itemsPerPage;
   public publications: Publication[]; 
   public noMore = false;
+  public showImage;
 
   constructor(
   	private _route: ActivatedRoute,
   	private _router: Router,
   	private _userService: UserService,
-    private _publication: PublicationService
+    private _publicationService: PublicationService
   	) {
   		this.title = 'Timeline';
   		this.identity = this._userService.getIdentity();
@@ -45,9 +46,8 @@ export class TimelineComponent implements OnInit {
 
 
   getPublications(page,adding = false){
-    this._publication.getPublications(this.token, page).subscribe(
+    this._publicationService.getPublications(this.token, page).subscribe(
       response =>{
-            console.log(response);
         if(response.publications){
           this.total = response.total_items;
           this.pages = response.pages;
@@ -87,7 +87,25 @@ export class TimelineComponent implements OnInit {
     this.getPublications(this.page, true);
   }
 
-  refresh(event){
+  refresh(event = null){
     this.getPublications(1);
+  }
+
+  showThisImage(id){
+    this.showImage = id;
+  }
+
+  hideThisImage(id){
+    this.showImage = 0;
+  }
+
+  deletePublication(id){
+    this._publicationService.deletePublication(this.token, id).subscribe(
+      response => {
+       this.refresh();
+      },error =>{
+        console.log(error);
+      }
+    );
   }
 }

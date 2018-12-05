@@ -1,7 +1,7 @@
 'use strict'
 
-var parth = require('path');
-var rf = require('fs');
+var path = require('path');
+var fs = require('fs');
 var moment = require('moment');
 var mongoosePaginate = require('mongoose-pagination');
 
@@ -207,7 +207,6 @@ function removeFilesofUpload(res, file_path, message){
 
 function getImageFile(req, res){
 	var image_file = req.params.imageFile; //Parametro que se recoge por la url, ese nombre de ficheco que se pase por la url, va a ser el que va a recibir el metodo, y va a sacar esa imagen del sistema de ficheros y nos la va a regresar 
-
 	var path_file = './upload/publications/'+image_file;
 	fs.exists(path_file, (exists) =>{
 		if(exists){
